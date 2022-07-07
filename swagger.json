@@ -1,0 +1,5074 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "HERA",
+    "description": "Documentation from Hera api",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "authorization"
+      }
+    }
+  },
+
+  "paths": {
+
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "login of user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "office": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "send": {
+                      "email": "string",
+                      "password": "string"
+                    },
+                    "receive": {
+                      "true": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/auth/validate-token": {
+      "post": {
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "validate token and login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "office": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "send": {
+                      "email": "string",
+                      "cod": "string"
+                    },
+                    "receive": {
+                      "name": "string",
+                      "email": "string",
+                      "token": "string",
+                      "office": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/auth/menu": {
+      "get": {
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "get a user menu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "name": "string",
+                      "url": "string",
+                      "icon": "string",
+                      "child": "boolean",
+                      "childList": [
+                        {
+                          "name": "string",
+                          "url": "string",
+                          "icon": "string"
+                        }
+                      ]
+                    } 
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/auth/validate-token/:token": {
+      "get": {
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "Validate token email",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "token": "token by url"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/auth/active-user": {
+      "put": {
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "create a new sector",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "cod": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "cod": "string",
+                    "token": "string",
+                    "password": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/sector/create": {
+      "post": {
+        "tags": ["Sector"],
+        "responses": {
+          "200": {
+            "description": "create a new sector",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/sector/getAll": {
+      "get": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Sector"],
+        "responses": {
+          "200": {
+            "description": "A list of all sectors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/sector/update": {
+      "put": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Sector"],
+        "responses": {
+          "200": {
+            "description": "Update a sectors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/sector/delete/:idSector": {
+      "delete": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Sector"],
+        "responses": {
+          "200": {
+            "description": "Delete a sector.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "parameter": "idSector by url"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/office/create": {
+      "post": {
+        "tags": ["Office"],
+        "responses": {
+          "200": {
+            "description": "create a new office",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "idSector": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "name": "string",
+                    "idSector": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/office/createOfficeSector": {
+      "post": {
+        "tags": ["Office"],
+        "responses": {
+          "200": {
+            "description": "create a new office with sector",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "idOffice": {
+                      "type": "integer"
+                    },
+                    "idSector": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "idOffice": "integer",
+                    "idSector": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/office/getAll": {
+      "get": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Office"],
+        "responses": {
+          "200": {
+            "description": "A list of all offices.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string",
+                      "sector": {
+                        "id": "integer",
+                        "name": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/office/getAllOfficeSector": {
+      "get": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Office"],
+        "responses": {
+          "200": {
+            "description": "A list of all offices and sectors.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "office": {
+                        "id": "integer",
+                        "name":"string"
+                      },
+                      "sector": {
+                        "id": "integer",
+                        "name":"string"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/office/update": {
+      "put": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Office"],
+        "responses": {
+          "200": {
+            "description": "Update a office.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/office/delete/:idOffice": {
+      "delete": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Office"],
+        "responses": {
+          "200": {
+            "description": "Delete an office.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "parameter": "idOffice by url"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/office/deleteOfficeSector/:idOfficeSector": {
+      "delete": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["Office"],
+        "responses": {
+          "200": {
+            "description": "Delete an office sector.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "parameter": "idOfficeSector by url"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/user/create": {
+      "post": {
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "create a new user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "idSector": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "name": "string",
+                    "email": "string",
+                    "idOfficeSector": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/user/getAll": {
+      "get": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "A list of all users.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string",
+                      "email": "string",
+                      "status": "integer",
+                      "idOfficeSector": "integer",
+                      "office": {
+                        "id": "integer",
+                        "name": "string"
+                      },
+                      "sector": {
+                        "id": "integer",
+                        "name": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/user/change-password": {
+      "put": {
+        "security": [{ "apiKeyAuth": [] }],
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "Change password.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "password": "string",
+                    "newPassword": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/module/create": {
+      "post": {
+        "tags": ["Module"],
+        "responses": {
+          "200": {
+            "description": "create a new module",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/module/get": {
+      "get": {
+        "tags": ["Module"],
+        "responses": {
+          "200": {
+            "description": "get all modules",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/module/getPages/:id": {
+      "get": {
+        "tags": ["Module"],
+        "responses": {
+          "200": {
+            "description": "get all pages by module",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "name": "string",
+                      "url": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/get": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all squads",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "isDirector": "boolean",
+                      "squads": [
+                        {
+                          "id": "integer",
+                          "name": "string",
+                          "teamLeaderProspection?": "boolean",
+                          "teamLeaderMonitoring?": "boolean",
+                          "userProspection?": "boolean",
+                          "userMonitoring?": "boolean"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/create": {
+      "post": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "create a new squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "office": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "name": "string",
+                    "idTeamLeaderProspection": "integer",
+                    "idTeamLeaderMonitoring": "integer",
+                    "prospection": ["integer", "integer"],
+                    "monitoring": ["integer", "integer"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/getUsers": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all users avaiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "isDirector": true,
+                      "squads": [
+                        {
+                          "id": "integer",
+                          "name": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/getProducts": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all products of squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "isDirector": true,
+                      "squads": [
+                        {
+                          "id": "integer",
+                          "name": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/getTypes": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all types of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "isDirector": true,
+                      "squads": [
+                        {
+                          "id": "integer",
+                          "name": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/detail/:idSquad": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get the detail of squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string",
+                    "teamLeaderProspection": {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    "usersProspection": [
+                      {
+                        "id": "integer",
+                        "name": "string"
+                      }
+                    ],
+                    "teamLeaderMonitoring": {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    "usersMonitoring": [
+                      {
+                        "id": "integer",
+                        "name": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/teamleader/:idSquad": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get the detail of squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "teamLeaderProspection": {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    "teamLeaderMonitoring": {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/create-user-squad": {
+      "post": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "create a new user of squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idSquad": "integer",
+                    "idUser": "integer",
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/user-squad/:idSquad/:idUser": {
+      "delete": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "delete an user of squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "return": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/user-squad-prospection/:idSquad": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all users of prospection squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/user-squad-monitoring/:idSquad": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all users of monitoring squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/user-teamleader": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all team leaders of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/user-teamleader/:idSquad": {
+      "get": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "get all team leaders avaiable to change in squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/squad/change-teamleader": {
+      "put": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "change the team leader of squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idUser": "integer",
+                    "type": "integer",
+                    "idSquad": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/squad/change-name": {
+      "put": {
+        "tags": ["Squad"],
+        "responses": {
+          "200": {
+            "description": "change the name of squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "name": "integer",
+                    "idSquad": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/create": {
+      "post": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "create a new influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "proporties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "instagramName": "string",
+                    "idTrackFollowers": "integer",
+                    "idSegment": "integer",
+                    "idSegmentSecondary": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getAll": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all infuencers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "isDirector": "boolean",
+                      "permission": "boolean",
+                      "influencerList": {
+                        "id": "integer",
+                        "name": "string",
+                        "instagramName":"string",
+                        "trackFollowers": {
+                          "id": "integer",
+                          "description":"string"
+                        },
+                        "segment": {
+                          "id": "integer",
+                          "name": "string"
+                        },
+                        "segmentSecondary": {
+                          "id": "integer",
+                          "name": "string"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getByName/:name": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all infuencers by name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "isDirector": "boolean",
+                      "influencerList": {
+                        "id": "integer",
+                        "name": "string",
+                        "instagramName":"string",
+                        "trackFollowers": {
+                          "id": "integer",
+                          "description":"string"
+                        },
+                        "segment": {
+                          "id": "integer",
+                          "name": "string"
+                        },
+                        "segmentSecondary": {
+                          "id": "integer",
+                          "name": "string"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getTrackFollowers": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all track followers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "description": "string"   
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getSegment": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all segments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "name": "string"   
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getAllProducts/:idInfluencer": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all products used of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getAllUserAndStatus/:idInfluencer": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all users and status used of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "name": "string",
+                      "status": "string",
+                      "products": [
+                        {
+                          "name": "string"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getAllProductsAvaiable/:idInfluencer": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all products avaiable of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getAllProducts": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all products avaiable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/influencer/validateSquadInfluencer/:idInfluencer/:idSquad": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "check existing products in the squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "return": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getAllByUser": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all influencer created by user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "permission": "boolean",
+                    "influencerList": [
+                      {
+                        "id": "integer",
+                        "name": "string",
+                        "instagramName": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/influencer/getDetailByInfluencer/:idInfluencer": {
+      "get": {
+        "tags": ["Influencer"],
+        "responses": {
+          "200": {
+            "description": "get all influencer created by user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "name": "string",
+                      "description": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/create": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create a new prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idInfluencer": "integer",
+                    "idSquad": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/create-first-contact": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create the first contact of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "audience": "integer",
+                    "cel": "string",
+                    "public": "string",
+                    "idLocation": "integer",
+                    "idAge": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/create-negotiation": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create a negotiation of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "initialDate": "string",
+                    "finalDate": "string",
+                    "contractPeriod": "integer",
+                    "value": "decimal",
+                    "job": "string",
+                    "comments": "string",
+                    "additionalImageUse": "boolean",
+                    "additionalPeriod": "integer",
+                    "additionalPeriodValue": "decimal",
+                    "idProduct": ["integer"],
+                    "idType": "integer",
+                    "idExclusivity": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/first-contact": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update the first contact of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "audience": "integer",
+                    "cel": "string",
+                    "public": "string",
+                    "idLocation": "integer",
+                    "idAge": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/negotiation": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update a negotiation of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "initialDate": "string",
+                    "finalDate": "string",
+                    "contractPeriod": "integer",
+                    "value": "decimal",
+                    "job": "string",
+                    "comments": "string",
+                    "additionalImageUse": "boolean",
+                    "additionalPeriod": "integer",
+                    "additionalPeriodValue": "decimal",
+                    "idProduct": ["integer"],
+                    "idType": "integer",
+                    "idExclusivity": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/request-approval": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "request approval a prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/approval": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "approval a prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "step": "integer",
+                    "comments": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/disapprove": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "disapprove a prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "comments": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getAll/:idSquad/:initialDate/:finalDate/:status/:typeInfluencer/:instagramName/:product/:idUser/:filter": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all prospections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "idInfluencer": "integer",
+                      "instagramName": "string",
+                      "name": "string",
+                      "status": "integer",
+                      "statusName": "string",
+                      "disapproved": "boolean",
+                      "document": {
+                        "exist": "boolean",
+                        "typeDocument": "integer",
+                        "idTypeSelected": "integer"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getSquad": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all squads by user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "name": "string"   
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getStatus": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/prospection/getLocation": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all locations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "initials": "string",
+                      "state": "string" 
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getAge": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all ages",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getExclusivity": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all exclusivities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getType/:idSquad": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all type by squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {   
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/mapping/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get mapping of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "cod": "string",
+                    "influencer": {
+                      "id": "integer",
+                      "name": "string",
+                      "instagramName": "string"
+                    },
+                    "squad": {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/first-contact/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get first contact of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "public": "20000",
+                    "audience": "integer",
+                    "cel": "string",
+                    "location": {
+                      "id": "integer",
+                      "initials": "string"
+                    },
+                    "ageGroup": {
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/negotiation/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get negotiation of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "initialDate": "string",
+                    "finalDate": "string",
+                    "contractPeriod": "integer",
+                    "mediaAudience": "double",
+                    "value": "double",
+                    "mediaValue": "double",
+                    "job": "string",
+                    "comments": "string",
+                    "additionalImageUse": "boolean",
+                    "additionalPeriod": "integer",
+                    "additionalPeriodValue": "decimal",
+                    "typeInfluencer": {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    "exclusivity": {
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/details-information/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get the detail of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "status": "integer",
+                      "dataInformation": {
+                        "products": [
+                          {
+                            "id": "integer",
+                            "name": "string"
+                          }
+                        ],
+                        "permissionUpdate": "boolean"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/status-step/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all type by squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "responsable": {
+                      "user": "string",
+                      "userChange": "boolean"
+                    },
+                    "stepStatus": [
+                      {
+                        "obs": "boolean",
+                        "comments": "teste",
+                        "statusProspection": {
+                          "id": "integer",
+                          "description": "string"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/create-checklist": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create a checklis of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "checklist": {
+                      "idProspection": "integer",
+                      "nickname": "string",
+                      "fullName": "string",
+                      "class": "string",
+                      "fallowers": "integer",
+                      "advice": "boolean",
+                      "coupon": "string",
+                      "birthday": "string"
+                    },
+                    "checklistSocial": {
+                      "bowlSend": "integer",
+                      "observation": "string",
+                      "storie": "integer",
+                      "storieValue": "decimal",
+                      "photo": "integer",
+                      "photoValue": "decimal",
+                      "photoFeed": "integer",
+                      "photoFeedValue": "decimal",
+                      "video": "integer",
+                      "videoValue": "decimal",
+                      "videoFeed": "integer",
+                      "videoFeedValue": "decimal",
+                      "tiktok": "integer",
+                      "tiktokValue": "decimal",
+                      "tiktokFeed": "integer",
+                      "tiktokFeedValue": "decimal",
+                      "igtv": "integer",
+                      "igtvValue": "decimal",
+                      "igtvFeed": "integer",
+                      "igtvFeedValue": "decimal",
+                      "live": "integer",
+                      "liveValue": "decimal",
+                      "liveSave": "integer",
+                      "liveSaveValue": "decimal",
+                      "youtube": "integer",
+                      "youtubeValue": "decimal",
+                      "youtubeFeed": "integer",
+                      "youtubeFeedValue": "decimal",
+                      "brandExclusive": "boolean",
+                      "segmentExclusive": "boolean",
+                      "segmentExclusiveValue": "decimal",
+                      "allowBoost": "boolean",
+                      "idProspection": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/create-token": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create the token of document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/contract/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get the prospection contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "url": "string",
+                    "description": "string",
+                    "observation": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getContract/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get the prospection contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "urlContract": "string",
+                    "observation": "string",
+                    "additiveTerm": [
+                      "string",
+                      "string"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getChecklist/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get the checklist contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "urlChecklist": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/prospection/validate-token/:token": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "validate the token of document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "update": "boolean",
+                    "comments?": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/address-document": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create the address of the influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "city": "string",
+                    "cep": "string",
+                    "address": "string",
+                    "district": "string",
+                    "uf": "string",
+                    "number": "string",
+                    "complement": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/address-document-update": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update the address of the influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "city": "string",
+                    "cep": "string",
+                    "address": "string",
+                    "district": "string",
+                    "uf": "string",
+                    "number": "string",
+                    "complement": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/bank-document": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create the bank of the document influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "banks": [
+                      {
+                        "percentage": "integer",
+                        "mainName": "string",
+                        "cpfCnpj": "string",
+                        "bank": "string",
+                        "agency": "string",
+                        "account": "string",
+                        "typePix?": "string",
+                        "pix?": "string",
+                        "receiptBank": "boolean",
+                        "file": "file"
+                      }
+                    ] 
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/bank-document-update": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update the bank of the document influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "banks": [
+                      {
+                        "id?": "integer",
+                        "percentage": "integer",
+                        "mainName": "string",
+                        "cpfCnpj": "string",
+                        "bank": "string",
+                        "agency": "string",
+                        "account": "string",
+                        "typePix": "string",
+                        "isNew": "boolean",
+                        "pix": "string",
+                        "file": "file"
+                      }
+                    ] 
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/approval-document": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "approval or desaproved the document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "comments": "string",
+                    "step": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/documentation/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all documentation of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idDocumentation": "integer",
+                    "contractor": [
+                      {
+                        "id": 13,
+                        "name": "Lucas",
+                        "rg": "4234342",
+                        "cpf": "23523233635",
+                        "nacionality": "Brasileiro",
+                        "civilState": "",
+                        "job": "",
+                        "tel": "54353463464",
+                        "email": "lucas@gmail.com",
+                        "isUnderage": 1,
+                        "files": [
+                          {
+                            "url": "2a82275daf16d2566fd3e950bcdfe020.pdf",
+                            "subtitle": "rg"
+                          }
+                        ]
+                      }
+                    ],
+                    "intervening": [
+                      {
+                        "id": 6,
+                        "corporateName": "nutrin2",
+                        "email": "nn@gmail.com",
+                        "tel": "98199898855",
+                        "files": [
+                          {
+                            "url": "628f8cbac15a27a2aa823b898c5d3284.jpg",
+                            "subtitle": "Inscrição CNPJ"
+                          }
+                        ]
+                      }
+                    ],
+                    "bank": [
+                      {
+                        "id": "integer",
+                        "percentage": 100,
+                        "mainName": "teste",
+                        "cpfCnpj": "08968851433",
+                        "bank": "itau",
+                        "agency": "4526",
+                        "account": "5565213",
+                        "typePix": "cpf",
+                        "pix": "08968851466",
+                        "receiptBank": 1,
+                        "urlBank": "teste.png"
+                      }
+                    ],
+                    "address": [
+                      {
+                        "cep": "53050260",
+                        "address": "teste",
+                        "city": "teste",
+                        "district": "teste",
+                        "uf": "pe",
+                        "number": "89",
+                        "complement": null
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/upload-contract": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create a new contract in the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "isLegal": "boolean",
+                    "file": "file",
+                    "observation": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/upload-update-contract": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "change a contract of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "isLegal": "boolean",
+                    "file": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/upload-checklist": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create a new checklist in the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "file": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/create-payment": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create a new payment in the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "payments": [
+                      "string"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get the contract or checklist document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "url": "string",
+                    "description": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/form-info-social/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get the social values e infos about the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "info": {
+                      "nickname": "string",
+                      "nameFull": "string",
+                      "class": "string",
+                      "fallowers": "integer",
+                      "advice": "boolean",
+                      "coupon": "string",
+                      "birthday": "string"
+                    },
+                    "social": {
+                      "bowlSend": "integer",
+                      "observation": "string",
+                      "storie": "integer",
+                      "storieValue": "double",
+                      "photo": "integer",
+                      "photoValue": "double",
+                      "photoFeedValue": "double",
+                      "photoFeed": "integer",
+                      "video": "integer",
+                      "videoValue": "double",
+                      "videoFeed": "integer",
+                      "videoFeedValue": "double",
+                      "tiktok": "integer",
+                      "tiktokValue": "double",
+                      "tiktokFeed": "integer",
+                      "tiktokFeedValue": "double",
+                      "igtv": "integer",
+                      "igtvValue": "double",
+                      "igtvFeed": "integer",
+                      "igtvFeedValue": "double",
+                      "live": "integer",
+                      "liveValue": "double",
+                      "liveSave": "integer",
+                      "liveSaveValue": "double",
+                      "youtube": "integer",
+                      "youtubeValue": "double",
+                      "youtubeFeed": "integer",
+                      "youtubeFeedValue": "double",
+                      "brandExclusive": "integer",
+                      "segmentExclusive": 1,
+                      "allowBoost": "integer",
+                      "segmentExclusiveValue": "double",
+                      "valueUseImage": "double",
+                      "commentChecklist": "string",
+                      "idProspection": "integer",
+                      "commentBoost": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/influencer-validate-contract": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "influencer approval or desaproved the contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "step": "integer",
+                    "comments?": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/send-influencer-contract": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "envite the email with contract to influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getPayment/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all payments of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "datePayment": "string",
+                      "confirmPayment": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/change-user": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "change user in prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idUser": "integer",
+                    "idUserToChange": "integer",
+                    "idSquad": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/get-user-prospection": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all users from prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/user-changed": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all user changed in prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/documentation": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create documentation of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "name": "string",
+                    "rg": "string",
+                    "cpf": "string",
+                    "nacionality": "string",
+                    "email": "string",
+                    "isUnderage": "boolean",
+                    "token": "string",
+                    "idProspection": "integer",
+                    "files?": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/documentation-update": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update documentation of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string",
+                    "rg": "string",
+                    "cpf": "string",
+                    "nacionality": "string",
+                    "email": "string",
+                    "isUnderage": "boolean",
+                    "token": "string",
+                    "isNew": "boolean",
+                    "idDocumentation": "integer",
+                    "idProspection": "integer",
+                    "files?": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/documentation-intervening": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create documentation intervening of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "corporateName": "string",
+                    "tel": "string",
+                    "email": "string",
+                    "token": "string",
+                    "idProspection": "integer",
+                    "files?": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/documentation-intervening-update": {
+      "post": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "create documentation intervening of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id?": "integer",
+                    "corporateName": "string",
+                    "tel": "string",
+                    "email": "string",
+                    "token": "string",
+                    "isNew": "bollean",
+                    "idDocumentation": "integer",
+                    "idProspection": "integer",
+                    "files?": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/payment-request": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all request payments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "idProspection": "integer",
+                      "instagramName": "string",
+                      "datePayment": "string",
+                      "value": "double",
+                      "confirmMonitoring": "boolean",
+                      "confirmProspection": "bollean",
+                      "isDirector?": "boolean",
+                      "isTeamLeaderProspection?": "boolean",
+                      "isTeamLeaderMonitoring?": ""
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/approval-payment-request": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "change the payment request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPayment": "integer",
+                      "idPaymentRequest": "integer",
+                      "approval": "boolean",
+                      "comment?": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/renovation": {
+      "post": {
+        "tags": ["Prospection-Renovation"],
+        "responses": {
+          "200": {
+            "description": "create the prospection renovation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idProspection": "integer",
+                      "comment?": "string",
+                      "file": "file"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/renovation-all": {
+      "get": {
+        "tags": ["Prospection-Renovation"],
+        "responses": {
+          "200": {
+            "description": "get all prospection renovation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "url": "string",
+                      "idStatus": "integer",
+                      "statusName": "string",
+                      "influencerName": "string",
+                      "instagramName": "string",
+                      "idProspection": "integer",
+                      "comment": "string",
+                      "userMonitoring": "integer",
+                      "userProspection": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/approval-renovation": {
+      "put": {
+        "tags": ["Prospection-Renovation"],
+        "responses": {
+          "200": {
+            "description": "get all prospection renovation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idRenovation": "integer",
+                      "step": "integer",
+                      "comment?": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/getAll-legal/:status": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get all legal prospections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string",
+                      "influencer": "string",
+                      "status": "integer",
+                      "statusName": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/approval-contract": {
+      "put": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "approval or desaproved the contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "step": "integer",
+                    "comments?": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/mapping/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get mapping of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "cod": "string",
+                    "influencer": {
+                      "id": "integer",
+                      "name": "string",
+                      "instagramName": "string"
+                    },
+                    "squad": {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/first-contact/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get first contact of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "public": "20000",
+                    "audience": "integer",
+                    "cel": "string",
+                    "location": {
+                      "id": "integer",
+                      "initials": "string"
+                    },
+                    "ageGroup": {
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/negotiation/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get negotiation of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "initialDate": "string",
+                    "finalDate": "string",
+                    "contractPeriod": "integer",
+                    "mediaAudience": "double",
+                    "value": "double",
+                    "mediaValue": "double",
+                    "job": "string",
+                    "comments": "string",
+                    "additionalImageUse": "boolean",
+                    "additionalPeriod": "integer",
+                    "additionalPeriodValue": "decimal",
+                    "typeInfluencer": {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    "exclusivity": {
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/details-information/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get the detail of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "status": "integer",
+                      "dataInformation": {
+                        "products": [
+                          {
+                            "id": "integer",
+                            "name": "string"
+                          }
+                        ],
+                        "permissionUpdate": "boolean"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/typeDocument/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get the type document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "typeDocument": {
+                      "id": "integer",
+                      "idTypeDocument": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/document-address/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get the address of document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "address": {
+                      "cep": "string",
+                      "address": "string",
+                      "city": "string",
+                      "district": "string",
+                      "uf": "string",
+                      "number": "string",
+                      "complement": "string",
+                      "idProspection": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/user-changed": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get all user changed in prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "name": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/document-bank/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get all the bank of document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "bank": [
+                      {
+                        "id": "integer",
+                        "percentage": "integer",
+                        "mainName": "string",
+                        "cpfCnpj": "string",
+                        "bank": "string",
+                        "agency": "string",
+                        "account": "string",
+                        "typePix": "string",
+                        "pix": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "legal/form-info-social/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get the social values e infos about the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "info": {
+                      "nickname": "string",
+                      "nameFull": "string",
+                      "class": "string",
+                      "fallowers": "integer",
+                      "advice": "boolean",
+                      "coupon": "string",
+                      "birthday": "string"
+                    },
+                    "social": {
+                      "bowlSend": "integer",
+                      "storie": "integer",
+                      "storieValue": "double",
+                      "photo": "integer",
+                      "photoValue": "double",
+                      "photoFeedValue": "double",
+                      "photoFeed": "integer",
+                      "video": "integer",
+                      "videoValue": "double",
+                      "videoFeed": "integer",
+                      "videoFeedValue": "double",
+                      "tiktok": "integer",
+                      "tiktokValue": "double",
+                      "tiktokFeed": "integer",
+                      "tiktokFeedValue": "double",
+                      "igtv": "integer",
+                      "igtvValue": "double",
+                      "igtvFeed": "integer",
+                      "igtvFeedValue": "double",
+                      "live": "integer",
+                      "liveValue": "double",
+                      "liveSave": "integer",
+                      "liveSaveValue": "double",
+                      "youtube": "integer",
+                      "youtubeValue": "double",
+                      "youtubeFeed": "integer",
+                      "youtubeFeedValue": "double",
+                      "brandExclusive": "integer",
+                      "segmentExclusive": 1,
+                      "allowBoost": "integer",
+                      "segmentExclusiveValue": "double",
+                      "valueUseImage": "double",
+                      "commentChecklist": "string",
+                      "idProspection": "integer",
+                      "commentBoost": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/upload-contract": {
+      "post": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "create a new contract in the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "isLegal": "boolean",
+                    "file": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/upload-update-contract": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "change a contract of the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "isLegal": "boolean",
+                    "file": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/update-checklist": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update a checklist of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "checklist": {
+                      "idProspection": "integer",
+                      "nickname": "string",
+                      "fullName": "string",
+                      "class": "string",
+                      "fallowers": "integer",
+                      "advice": "boolean",
+                      "coupon": "string",
+                      "birthday": "string"
+                    },
+                    "checklistSocial": {
+                      "bowlSend": "integer",
+                      "storie": "integer",
+                      "storieValue": "decimal",
+                      "photo": "integer",
+                      "photoValue": "decimal",
+                      "photoFeed": "integer",
+                      "photoFeedValue": "decimal",
+                      "video": "integer",
+                      "videoValue": "decimal",
+                      "videoFeed": "integer",
+                      "videoFeedValue": "decimal",
+                      "tiktok": "integer",
+                      "tiktokValue": "decimal",
+                      "tiktokFeed": "integer",
+                      "tiktokFeedValue": "decimal",
+                      "igtv": "integer",
+                      "igtvValue": "decimal",
+                      "igtvFeed": "integer",
+                      "igtvFeedValue": "decimal",
+                      "live": "integer",
+                      "liveValue": "decimal",
+                      "liveSave": "integer",
+                      "liveSaveValue": "decimal",
+                      "youtube": "integer",
+                      "youtubeValue": "decimal",
+                      "youtubeFeed": "integer",
+                      "youtubeFeedValue": "decimal",
+                      "brandExclusive": "boolean",
+                      "segmentExclusive": "boolean",
+                      "segmentExclusiveValue": "decimal",
+                      "allowBoost": "boolean",
+                      "valueUseImage": "double",
+                      "commentChecklist": "string",
+                      "idProspection": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/update-payment": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update a payment in the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "payments": [
+                      {
+                        "idPayment": "integer",
+                        "datePayment": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/change-status-prospection": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "update a status in the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "idStatusAtual": "integer",
+                    "idStatusToChange": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getLogChangedStatus/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "list all update status in the prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "id": "integer",
+                    "description": "string",
+                    "updatedAt": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/signature-contract": {
+      "put": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "approval the signature of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "step": "integer",
+                    "comments?": "string",
+                    "effectiveDate?": "string",
+                    "useImageDate?": "string",
+                    "file?": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/getAdditiveTerm": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all additive term of influencer view",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idAdditiveTerm": "integer",
+                    "idProspection": "integer",
+                    "influencerName": "string",
+                    "instagramName": "string",
+                    "reason": "string",
+                    "nameReasonAdditiveTerm": "string",
+                    "idStatus": "integer",
+                    "statusName": "string",
+                    "description": "string",
+                    "observation": "string",
+                    "urlFileSend": "string",
+                    "userProspection": "boolean",
+                    "userMonitoring": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/getCommentsEmailsContract/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get comments about prospection with list emails for contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "comments": "string" 
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/prospection/get-report/:initialDate/:finalDate/:typeInfluencer/:segment/:product/:idUser": {
+      "get": {
+        "tags": ["Prospection-Report"],
+        "responses": {
+          "200": {
+            "description": "get the report of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "totalMapped": 1,
+                    "totalSigned": 1,
+                    "totalValueSigned": "3000.00",
+                    "totalMediaValueSigned": "1000.00"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/get-payments-paid-influencer/:month": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "gett all payments paid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "idProspection": "integer",
+                      "instagramName": "string",
+                      "datePayment": "string",
+                      "value": "double",
+                      "valuePayment": "double"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/get-detail-payments-influencer/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all payments by idProspection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "datePayment": "string",
+                      "confirmPayment": "string",
+                      "distraction": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/get-payments-log-influencer/:idProspectionFinancial": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "get all payments paid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "comment": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/get-detail-bank-information-influencer/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "list all data bank of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "percentage": "integer",
+                      "mainName": "string",
+                      "cpfCnpj": "string",
+                      "bank": "string",
+                      "agency": "string",
+                      "account": "string",
+                      "typePix": "string",
+                      "pix": "string",
+                      "receiptBank": "boolean",
+                      "urlBank": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/getContract/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get the prospection contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "urlContract": "string",
+                    "observation":"string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/getChecklist/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get the checklist contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "urlChecklist": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/getPayment/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get all payments of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id":"integer",
+                      "datePayment": "string",
+                      "confirmPayment": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/error-contract/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "get error about the contract",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                      "comments": "string"
+                    } 
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/send-sign-email": {
+      "put": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "envite the email with contract sign to influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/signature-contract": {
+      "put": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "approval the signature of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "idProspection": "integer",
+                    "step": "integer",
+                    "comments?": "string",
+                    "effectiveDate?": "string",
+                    "useImageDate?": "string",
+                    "file?": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/getAllAdditiveTerm": {
+      "get": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "list of all additive terms",
+            "content": {
+              "application/json": {
+                "schema": [
+                  {
+                    "idAdditiveTerm": "integer",
+                    "idProspection": "integer",
+                    "influencerName": "string",
+                    "instagramName": "string",
+                    "reason": "string",
+                    "idStatus": "integer",
+                    "statusName": "string",
+                    "description": "string",
+                    "observation": "string",
+                    "urlFileSend": "string",
+                    "contractProspection": "string"
+                  }, 
+                  {
+                    "idAdditiveTerm": "integer",
+                    "idProspection": "integer",
+                    "influencerName": "string",
+                    "instagramName": "string",
+                    "reason": "string",
+                    "idStatus": "integer",
+                    "statusName": "string",
+                    "description": "string",
+                    "observation": "string",
+                    "urlFileSend": "string",
+                    "contractProspection": "string"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/legal/validateLegalAdditiveTerm": {
+      "put": {
+        "tags": ["Prospection-Legal"],
+        "responses": {
+          "200": {
+            "description": "approval additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "step = 0": {
+                    "idAdditiveTerm": "integer",
+                    "step": "integer",
+                    "observation": "string"
+                  },
+                  "step = 1": {
+                    "idAdditiveTerm": "integer",
+                    "step": "integer"
+                  }    
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all/:idSquad": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "gett all monitoring",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "idProspection": "integer",
+                      "idUser": "string",
+                      "userName": "string",
+                      "name": "string",
+                      "instagramName": "string",
+                      "status": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all-publication-by-monitoring/:idMonitoring": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "gett all publications of monitoring",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "datePublication": "2022-03-23T23:25:32.000Z",
+                      "link": null,
+                      "comment": null,
+                      "color": "ffffff",
+                      "isEvaluation": false,
+                      "idStatusPublication": 1,
+                      "statusPublication": {
+                        "id": 1,
+                        "description": "Aguardando Publicação"
+                      },
+                      "publicationStories?": {
+                        "sequence": 2,
+                        "link": "teste"
+                      },
+                      "publicationPhoto?": {
+                        "photo": 1,
+                        "dateReceive": "2022-03-23",
+                        "datePost": "2022-03-25"
+                      },
+                      "publicationVideo?": {
+                        "video": 3,
+                        "dateReceive": "2022-03-23",
+                        "datePost": "2022-03-25",
+                        "isReels": true,
+                        "isTiktok": false,
+                        "isYoutube": false
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all-publication-by-user/:idUserMonitoring": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "gett all publications of monitoring by user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idUserMonitoring": 1,
+                      "publications": [
+                        {
+                          "datePublication": "2022-03-23T23:25:32.000Z",
+                          "link": null,
+                          "comment": null,
+                          "color": "ffffff",
+                          "isEvaluation": false,
+                          "idStatusPublication": 1,
+                          "statusPublication": {
+                            "id": 1,
+                            "description": "Aguardando Publicação"
+                          },
+                          "publicationStories": {
+                            "sequence": 2,
+                            "link": "teste"
+                          },
+                          "publicationPhoto": {
+                            "photo": 1,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25"
+                          },
+                          "publicationVideo": {
+                            "video": 3,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25",
+                            "isReels": true,
+                            "isTiktok": false,
+                            "isYoutube": false
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all-publication-by-squad/:idSquad": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "gett all publications of monitoring by squad",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idMonitoring": 1,
+                      "userMonitoring": {
+                        "id": 48,
+                        "name": "Leticia Silveira"
+                      },
+                      "publications": [
+                        {
+                          "datePublication": "2022-03-23T23:25:32.000Z",
+                          "link": null,
+                          "comment": null,
+                          "color": "ffffff",
+                          "isEvaluation": false,
+                          "idStatusPublication": 1,
+                          "statusPublication": {
+                            "id": 1,
+                            "description": "Aguardando Publicação"
+                          },
+                          "publicationStories": {
+                            "sequence": 2,
+                            "link": "teste"
+                          },
+                          "publicationPhoto": {
+                            "photo": 1,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25"
+                          },
+                          "publicationVideo": {
+                            "video": 3,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25",
+                            "isReels": true,
+                            "isTiktok": false,
+                            "isYoutube": false
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all-publication": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "gett all publications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idMonitoring": 1,
+                      "userMonitoring": {
+                        "id": 48,
+                        "name": "Leticia Silveira"
+                      },
+                      "publications": [
+                        {
+                          "datePublication": "2022-03-23T23:25:32.000Z",
+                          "link": null,
+                          "comment": null,
+                          "color": "ffffff",
+                          "isEvaluation": false,
+                          "idStatusPublication": 1,
+                          "statusPublication": {
+                            "id": 1,
+                            "description": "Aguardando Publicação"
+                          },
+                          "publicationStories": {
+                            "sequence": 2,
+                            "link": "teste"
+                          },
+                          "publicationPhoto": {
+                            "photo": 1,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25"
+                          },
+                          "publicationVideo": {
+                            "video": 3,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25",
+                            "isReels": true,
+                            "isTiktok": false,
+                            "isYoutube": false
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/new-user-monitoring": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "select a new user to monitoring",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idMonitoring": "integer",
+                      "idUser": "integer",
+                      "idSquad": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/monitoring/create-publication": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "create a new monitoring publcation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "publication":{
+                        "idMonitoring": "integer",
+                        "datePublication": "string",
+                        "isStories": "boolean",
+                        "isPhoto": "boolean",
+                        "isVideo": "boolean",
+                        "comment?": "string",
+                        "color": "string",
+                        "isLink": "boolean"
+                      },
+                      "link": {
+                        "url": "string",
+                        "origin": "string",
+                        "media": "string",
+                        "content": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/update-publication": {
+      "put": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "update the monitoring publcation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPublication": "integer",
+                      "datePublication": "string",
+                      "status": "string",
+                      "isStories": "boolean",
+                      "isPhoto": "boolean",
+                      "isVideo": "boolean",
+                      "comment?": "string",
+                      "commentChange": "string",
+                      "color": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/update-link-traking-publication": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "update a link monitoring publication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idMonitoring": "integer",
+                      "idPublication": "integer",
+                      "url": "string",
+                      "origin": "string",
+                      "media": "string",
+                      "campaign": "string",
+                      "content": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/evaluation-publication": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "make evaluation of publcation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPublication": "integer",
+                      "idStatusEvaluation": "string",
+                      "comment?": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/new-roadmap": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "create a new roadmap to monitoring",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idMonitoring": "integer",
+                      "description": "string",
+                      "isRoadmap": "boolean",
+                      "file": "file"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all-roadmap-by-user/:idMonitoring": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "get all roadmaps by user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "description": "string",
+                      "path": "string",
+                      "isRoadmap": "integer",
+                      "idStatus": "integer",
+                      "statusName": "string",
+                      "idMonitoring": "integer",
+                      "idUser": "integer",
+                      "userName": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all-roadmap-files/:idRoadmap": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "get all files of the roadmap",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "path": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/validate-token-roadmap/:token": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "validate material token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idRoadmap": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/roadmap-material": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "create material of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idRoadmap": "integer",
+                    "files": "file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-all-material-files/:idRoadmap": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "get all roadmap material of monitoring",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "path": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/approval-material": {
+      "put": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "approval material",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idRoadmap": "integer",
+                      "step": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/create-additive-term": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "create a new additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idProspection": "integer",
+                      "idReasonAdditiveTerm": "integer",
+                      "description": "string",
+                      "urlFileSend": "file"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/upload-additive-term": {
+      "post": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "create a new additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idAdditiveTerm": "integer",
+                      "file": "file"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/updateInstagramNameInfluencer": {
+      "put": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "update instagram name influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idInfluencer": "integer",
+                      "instagramName": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/negotiation": {
+      "put": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "update a negotiation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idProspection": "integer",
+                      "initialDate": "string",
+                      "finalDate": "string",
+                      "contractPeriod": "integer",
+                      "value": "decimal",
+                      "job": "string",
+                      "comments": "string",
+                      "additionalImageUse": "boolean",
+                      "additionalPeriod": "integer",
+                      "additionalPeriodValue": "decimal",
+                      "idProduct": ["integer"],
+                      "idType": "integer",
+                      "idExclusivity": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/negotiation/:idProspection": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "get negotiation of prospection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "initialDate": "string",
+                    "finalDate": "string",
+                    "contractPeriod": "integer",
+                    "mediaAudience": "double",
+                    "value": "double",
+                    "mediaValue": "double",
+                    "job": "string",
+                    "comments": "string",
+                    "additionalImageUse": "boolean",
+                    "additionalPeriod": "integer",
+                    "additionalPeriodValue": "decimal",
+                    "typeInfluencer": {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    "exclusivity": {
+                      "id": "integer",
+                      "description": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/update-checklist": {
+      "put": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "update a checklist of prospection in monitoring for additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {   
+                    "checklist": {
+                      "idProspection": "integer",
+                      "nickname": "string",
+                      "fullName": "string",
+                      "class": "string",
+                      "fallowers": "integer",
+                      "advice": "boolean",
+                      "coupon": "string",
+                      "birthday": "string"
+                    },
+                    "checklistSocial": {
+                      "bowlSend": "integer",
+                      "storie": "integer",
+                      "storieValue": "decimal",
+                      "photo": "integer",
+                      "photoValue": "decimal",
+                      "photoFeed": "integer",
+                      "photoFeedValue": "decimal",
+                      "video": "integer",
+                      "videoValue": "decimal",
+                      "videoFeed": "integer",
+                      "videoFeedValue": "decimal",
+                      "tiktok": "integer",
+                      "tiktokValue": "decimal",
+                      "tiktokFeed": "integer",
+                      "tiktokFeedValue": "decimal",
+                      "igtv": "integer",
+                      "igtvValue": "decimal",
+                      "igtvFeed": "integer",
+                      "igtvFeedValue": "decimal",
+                      "live": "integer",
+                      "liveValue": "decimal",
+                      "liveSave": "integer",
+                      "liveSaveValue": "decimal",
+                      "youtube": "integer",
+                      "youtubeValue": "decimal",
+                      "youtubeFeed": "integer",
+                      "youtubeFeedValue": "decimal",
+                      "brandExclusive": "boolean",
+                      "segmentExclusive": "boolean",
+                      "segmentExclusiveValue": "decimal",
+                      "allowBoost": "boolean",
+                      "idProspection": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/form-info-social/:idProspection": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "get the social values e infos about the prospection in monitoring for additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "info": {
+                      "nickname": "string",
+                      "nameFull": "string",
+                      "class": "string",
+                      "fallowers": "integer",
+                      "advice": "boolean",
+                      "coupon": "string",
+                      "birthday": "string"
+                    },
+                    "social": {
+                      "bowlSend": "integer",
+                      "observation": "string",
+                      "storie": "integer",
+                      "storieValue": "double",
+                      "photo": "integer",
+                      "photoValue": "double",
+                      "photoFeedValue": "double",
+                      "photoFeed": "integer",
+                      "video": "integer",
+                      "videoValue": "double",
+                      "videoFeed": "integer",
+                      "videoFeedValue": "double",
+                      "tiktok": "integer",
+                      "tiktokValue": "double",
+                      "tiktokFeed": "integer",
+                      "tiktokFeedValue": "double",
+                      "igtv": "integer",
+                      "igtvValue": "double",
+                      "igtvFeed": "integer",
+                      "igtvFeedValue": "double",
+                      "live": "integer",
+                      "liveValue": "double",
+                      "liveSave": "integer",
+                      "liveSaveValue": "double",
+                      "youtube": "integer",
+                      "youtubeValue": "double",
+                      "youtubeFeed": "integer",
+                      "youtubeFeedValue": "double",
+                      "brandExclusive": "integer",
+                      "segmentExclusive": 1,
+                      "allowBoost": "integer",
+                      "segmentExclusiveValue": "double",
+                      "valueUseImage": "double",
+                      "commentChecklist": "string",
+                      "idProspection": "integer",
+                      "commentBoost": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/update-payment": {
+      "put": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "update a payment in the prospection in monitoring for additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "idProspection": "integer",
+                    "payments": [
+                      {
+                        "idPayment": "integer",
+                        "datePayment": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/getPayment/:idProspection": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "get all payments of prospection for monitoring of additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "datePayment": "string",
+                      "confirmPayment": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/get-reason-additive-term": {
+      "get": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "get all reason for create additive term",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    },
+                    {
+                      "id": "integer",
+                      "name": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/monitoring/validateMonitoringAdditiveTerm": {
+      "put": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "validate additive term in monitoring",
+            "content": {
+              "application/json": {
+                "schema": {
+                    "idAdditiveTerm": "integer"
+                  }    
+                }
+              }
+            }
+          }
+        }
+    },
+
+    "wording/get-all-roadmap-by-wording/:status": {
+      "get": {
+        "tags": ["Wording"],
+        "responses": {
+          "200": {
+            "description": "get all roadmaps",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "description": "string",
+                      "path": "string",
+                      "idStatus": "integer",
+                      "statusName": "string",
+                      "idMonitoring": "integer",
+                      "idUser": "integer",
+                      "userName": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "wording/roadmap-wording": {
+      "post": {
+        "tags": ["Wording"],
+        "responses": {
+          "200": {
+            "description": "create the files of wording",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idRoadmap": "integer",
+                      "files": "file"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "wording/get-all-material-files/:idRoadmap": {
+      "post": {
+        "tags": ["Wording"],
+        "responses": {
+          "200": {
+            "description": "get all maeterial files",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "path": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/wording/get-all-publication": {
+      "get": {
+        "tags": ["Wording"],
+        "responses": {
+          "200": {
+            "description": "gett all publications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idMonitoring": 1,
+                      "userMonitoring": {
+                        "id": 48,
+                        "name": "Leticia Silveira"
+                      },
+                      "publications": [
+                        {
+                          "datePublication": "2022-03-23T23:25:32.000Z",
+                          "link": null,
+                          "comment": null,
+                          "color": "ffffff",
+                          "isEvaluation": false,
+                          "idStatusPublication": 1,
+                          "statusPublication": {
+                            "id": 1,
+                            "description": "Aguardando Publicação"
+                          },
+                          "publicationStories": {
+                            "sequence": 2,
+                            "link": "teste"
+                          },
+                          "publicationPhoto": {
+                            "photo": 1,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25"
+                          },
+                          "publicationVideo": {
+                            "video": 3,
+                            "dateReceive": "2022-03-23",
+                            "datePost": "2022-03-25",
+                            "isReels": true,
+                            "isTiktok": false,
+                            "isYoutube": false
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/get-payments-available/:month": {
+      "get": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "gett all payments available",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "idProspection": "integer",
+                      "cod": "string",
+                      "nameInfluencer": "string",
+                      "instagramName": "string",
+                      "datePayment": "string",
+                      "value": "double",
+                      "isLate": "boolean"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/get-payments-paid/:month": {
+      "get": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "gett all payments paid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "idProspection": "integer",
+                      "instagramName": "string",
+                      "datePayment": "string",
+                      "value": "double",
+                      "valuePayment": "double"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/get-payments-log/:idProspectionFinancial": {
+      "get": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "gett all payments paid",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "comment": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/details-payments/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "gett all payments by idProspection",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "datePayment": "string",
+                      "confirmPayment": "string",
+                      "distraction": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/get-payments-request": {
+      "get": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "gett all payments request by financial",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "idPaymentRequest": "integer",
+                      "idProspection": "integer",
+                      "cod": "string",
+                      "nameInfluencer": "string",
+                      "instagramName": "string",
+                      "datePayment": "string",
+                      "value": "string",
+                      "confirmMonitoring?": "boolean" ,
+                      "confirmProspection?": "boolean"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/payment-request": {
+      "post": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "payment request to confirm payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPayment": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/confirm-payment": {
+      "put": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "confirm payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPaymentRequest": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/get-detail-bank-information/:idProspection": {
+      "get": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "list all data bank of influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "id": "integer",
+                      "percentage": "integer",
+                      "mainName": "string",
+                      "cpfCnpj": "string",
+                      "bank": "string",
+                      "agency": "string",
+                      "account": "string",
+                      "typePix": "string",
+                      "pix": "string",
+                      "receiptBank": "boolean",
+                      "urlBank": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "notification/getNotification": {
+      "get": {
+        "tags": ["Notification"],
+        "responses": {
+          "200": {
+            "description": "get of notification actions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idAction": "integer",
+                      "message": "string",
+                      "idDetail": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "notification/deleteNotification/:idActionNotification": {
+      "delete": {
+        "tags": ["Notification"],
+        "responses": {
+          "200": {
+            "description": "delete notification after read.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "return": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
