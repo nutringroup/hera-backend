@@ -39,7 +39,6 @@ class App {
 
   routes() {
     // Definição das rotas por módulos
-    this.server.use("/auth2", authRouter); 
     this.server.use("/auth", authRouter); 
     this.server.use("/sector", sectorRouter); 
     this.server.use("/office", officeRouter);
