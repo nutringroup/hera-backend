@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
   "main": "src/server_hera.js",
+  "type": "module",
   "scripts": {
     "start": "pm2 start src/server_hera.ts",
     "dev": "yarn convert && ts-node-dev --respawn --transpile-only src/server_hera.ts",
@@ -11,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://Nutrin-DEV@dev.azure.com/Nutrin-DEV/Hera%20v2/_git/Hera_api_v1"
+    "url": "https://github.com/nutringroup/hera-backend"
   },
   "keywords": [],
   "author": "",
@@ -34,8 +35,8 @@
     "nodemon": "^1.3.3",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.9.0",
-    "sequelize-cli": "^6.3.0",
+    "sequelize": "^6.21.2",
+    "sequelize-cli": "^6.4.1",
     "sucrase": "^3.20.3",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6",

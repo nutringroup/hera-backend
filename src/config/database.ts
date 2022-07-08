@@ -8,13 +8,13 @@ module.exports = {
 
     dialect: "mysql", // postgres
 
-    host: process.env.DB_HOST_HMG,
+    host: process.env.DB_HOST,
 
-    username: process.env.DB_USER_HMG,
+    username: process.env.DB_USER,
 
-    password: process.env.DB_PASSWORD_HMG,
+    password: process.env.DB_PASSWORD,
 
-    database: process.env.DB_DATABASE_HMG,
+    database: process.env.DB_DATABASE,
 
     define: {
 
@@ -32,13 +32,13 @@ module.exports = {
 
     dialect: "mysql", // postgres
 
-    host: process.env.DB_HOST_PROD,
+    host: process.env.DB_HOST_HMG,
 
-    username: process.env.DB_USER_PROD,
+    username: process.env.DB_USER_HMG,
 
-    password: process.env.DB_PASSWORD_PROD,
+    password: process.env.DB_PASSWORD_HMG,
 
-    database: process.env.DB_DATABASE_PROD,
+    database: process.env.DB_DATABASE_HMG,
 
     define: {
 
