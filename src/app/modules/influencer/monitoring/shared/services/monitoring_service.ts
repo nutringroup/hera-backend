@@ -770,7 +770,7 @@ class MonitoringService {
             const campaign = await ProspectionChecklist.findOne({where: {idProspection: prospection?.idProspection}})
             let typeUser: any = `HR-${codContract.cod}`
 
-            const generateLink = `${link.url}?utm_source=${link.origin}&utm_medium=${typeUser}%20${link.media}&utm_campaign=${campaign?.nickname}&utm_content=${link.content}&utm_term=none`
+            const generateLink = `${link.url}?utm_source=${link.origin}&utm_medium=${typeUser}%20${link.media}&utm_campaign=${typeUser} ${campaign?.nickname}&utm_content=${link.content}&utm_term=none`
             return generateLink
         }
         catch (error) {
