@@ -775,7 +775,7 @@ class MonitoringService {
 
             const linkNew = await fetch('https://bityli.com/api/url/add', { method: 'POST', body: JSON.stringify({url: 'https://cabelodosonhos.com.br/?utm_source=Influencer - GK&utm_medium=HR-GU_P230%20IG Storie&utm_campaign=HR-GU_P230 Luana Benfica &utm_content=2° Semana&utm_term=none'}) , headers: new Headers({ 'Authorization': 'Bearer WNXROhZpdSNDpni434163', "Content-Type": "application/json" })});
             if (!linkNew.ok) throw new Error(`unexpected response ${linkNew.statusText}`);
-            console.log('linkNew', linkNew);
+            console.log('linkNew', linkNew.body);
             return generateLink
         }
         catch (error) {
