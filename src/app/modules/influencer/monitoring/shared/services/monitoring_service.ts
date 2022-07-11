@@ -772,7 +772,7 @@ class MonitoringService {
 
             const generateLink = `${link.url}?utm_source=${link.origin}&utm_medium=${typeUser}%20${link.media}&utm_campaign=${typeUser} ${campaign?.nickname}&utm_content=${link.content}&utm_term=none`;
 
-            const linkNew = fetch('http://bityli.com/api/url/add', { method: 'POST', body: JSON.stringify({url: generateLink}) , headers: new Headers({ 'Authorization': 'Bearer WNXROhZpdSNDpni434163', "Content-Type": "application/json" })});
+            const linkNew = await fetch('http://bityli.com/api/url/add', { method: 'POST', body: JSON.stringify({url: generateLink}) , headers: new Headers({ 'Authorization': 'Bearer WNXROhZpdSNDpni434163', "Content-Type": "application/json" })});
             console.log('linkNew', linkNew);
             return generateLink
         }
