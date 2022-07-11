@@ -773,10 +773,10 @@ class MonitoringService {
 
             const generateLink = `${link.url}?utm_source=${link.origin}&utm_medium=${typeUser}%20${link.media}&utm_campaign=${typeUser} ${campaign?.nickname}&utm_content=${link.content}&utm_term=none`;
 
-            const linkNew = await fetch('https://bityli.com/api/url/add', { method: 'POST', body: JSON.stringify({url: generateLink}) , headers: new Headers({ 'Authorization': 'Bearer WNXROhZpdSNDpni434163', "Content-Type": "application/json" })});
-            if (!linkNew.ok) throw new Error(`unexpected response ${linkNew.statusText}`);
-            console.log('linkNew', linkNew.body);
-            return generateLink
+            const linkNew: any = await fetch('https://bityli.com/api/url/add', { method: 'POST', body: JSON.stringify({url: generateLink}) , headers: new Headers({ 'Authorization': 'Bearer WNXROhZpdSNDpni434163', "Content-Type": "application/json" })});
+            if (!linkNew.ok) throw new Error(`Problema com o gerador de link!`);
+            const data = await linkNew.json();
+            return data.shorturl;
         }
         catch (error) {
             throw error

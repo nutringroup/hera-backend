@@ -44,6 +44,7 @@ import ProspectionFinancialLog from "../models/prospection_financial_log";
 import notificationService from "../../../../notification/shared/services/notification_service";
 import prospectionAdditiveTermService from "./prospection_additive_term_service";
 import ProspectionLogChangeStatus from "../models/prospection_log_change_status_influencer";
+import fetch, { Headers } from "node-fetch";
 
 
 class ProspectionService {
@@ -964,7 +965,10 @@ class ProspectionService {
             const token = jwt.sign({idProspection: prospection.idProspection, time: new Date()}, AuthConfig.cod!, {expiresIn: AuthConfig.expiresInTokenDocument});
             await ProspectionTokenDocument.create({ idProspection: prospection.idProspection, token: token });
 
-            return token;
+            const linkNew: any = await fetch('https://bityli.com/api/url/add', { method: 'POST', body: JSON.stringify({url: `https://hera-prod.vercel.app/influencer/validate-token/${token}`}) , headers: new Headers({ 'Authorization': 'Bearer WNXROhZpdSNDpni434163', "Content-Type": "application/json" })});
+            if (!linkNew.ok) throw new Error(`Problema com o gerador de link!`);
+            const data = await linkNew.json();
+            return data.shorturl;
             
         } catch (error) {
             throw error;
