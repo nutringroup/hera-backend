@@ -770,7 +770,10 @@ class MonitoringService {
             const campaign = await ProspectionChecklist.findOne({where: {idProspection: prospection?.idProspection}})
             let typeUser: any = `HR-${codContract.cod}`
 
-            const generateLink = `${link.url}?utm_source=${link.origin}&utm_medium=${typeUser}%20${link.media}&utm_campaign=${typeUser} ${campaign?.nickname}&utm_content=${link.content}&utm_term=none`
+            const generateLink = `${link.url}?utm_source=${link.origin}&utm_medium=${typeUser}%20${link.media}&utm_campaign=${typeUser} ${campaign?.nickname}&utm_content=${link.content}&utm_term=none`;
+
+            const linkNew = fetch('http://bityli.com/api/url/add', { method: 'POST', body: JSON.stringify({url: generateLink}) , headers: new Headers({ 'Authorization': 'Bearer WNXROhZpdSNDpni434163', "Content-Type": "application/json" })});
+            console.log('linkNew', linkNew);
             return generateLink
         }
         catch (error) {

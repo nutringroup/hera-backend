@@ -26,6 +26,7 @@ class MonitoringController {
             return res.json(true);
 
         } catch (error) {
+            console.log(error);
             await transaction.rollback();
             if(error instanceof AuthError)
                 return res.status(400).json({error: error.message});
