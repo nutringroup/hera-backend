@@ -23,6 +23,7 @@ import MonitoringRoadmapMaterial from '../models/monitoring_roadmap_material';
 import ProspectionInformation from '../../../prospection/shared/models/prospection_information';
 import notificationService from '../../../../notification/shared/services/notification_service';
 import ProspectionChecklist from '../../../prospection/shared/models/prospection_checklist';
+import fetch from "node-fetch";
 
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
