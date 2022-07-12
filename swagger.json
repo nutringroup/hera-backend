@@ -4099,8 +4099,30 @@
       }
     },
 
+    "/monitoring/delete-publication": {
+      "delete": {
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "delete the monitoring publication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPublication": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "/monitoring/update-link-traking-publication": {
-      "post": {
+      "put": {
         "tags": ["Monitoring"],
         "responses": {
           "200": {
@@ -4115,7 +4137,6 @@
                       "url": "string",
                       "origin": "string",
                       "media": "string",
-                      "campaign": "string",
                       "content": "string"
                     }
                   ]

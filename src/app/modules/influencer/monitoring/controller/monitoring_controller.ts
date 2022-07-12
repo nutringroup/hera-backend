@@ -285,6 +285,28 @@ class MonitoringController {
         }
     }
 
+    async deletePublication(req: Request, res: Response): Promise<Response> {
+
+        const publication = req.body;
+        const transaction = await sequelize.transaction();
+
+        try {
+
+            await monitoringService.deletePublication(publication.idPublication, transaction);
+            await transaction.commit();
+            return res.json(true);
+
+        } catch (error) {
+            await transaction.rollback();
+            if(error instanceof AuthError)
+                return res.status(400).json({error: error.message});
+            else if(error instanceof MonitoringError)
+                return res.status(400).json({error: error.message});
+            else
+                return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
+        }
+    }
+
     // ******** GET ********
     
     async getAll(req: Request, res: Response): Promise<Response> {

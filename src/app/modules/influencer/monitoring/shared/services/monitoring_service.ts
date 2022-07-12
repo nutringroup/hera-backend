@@ -791,6 +791,19 @@ class MonitoringService {
         }
     }
 
+    async deletePublication(idPublication: number, transaction: Transaction) {
+
+        try {
+
+            await PublicationMonitoring.destroy({where: {id: idPublication}, transaction: transaction})
+    
+            return 
+        }
+        catch(error) {
+            throw error
+        }
+    }
+
 }
 
 export default new MonitoringService();
