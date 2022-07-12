@@ -287,12 +287,12 @@ class MonitoringController {
 
     async deletePublication(req: Request, res: Response): Promise<Response> {
 
-        const publication = req.body;
+        const idPublication = req.params.idPublication;
         const transaction = await sequelize.transaction();
 
         try {
 
-            await monitoringService.deletePublication(publication.idPublication, transaction);
+            await monitoringService.deletePublication(Number(idPublication), transaction);
             await transaction.commit();
             return res.json(true);
 

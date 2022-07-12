@@ -4099,7 +4099,7 @@
       }
     },
 
-    "/monitoring/delete-publication": {
+    "/monitoring/delete-publication/:idPublication": {
       "delete": {
         "tags": ["Monitoring"],
         "responses": {
@@ -4110,7 +4110,7 @@
                 "schema": {
                   "example": [
                     {
-                      "idPublication": "integer"
+                      "parameter": "idPublication by url"
                     }
                   ]
                 }
