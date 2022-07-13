@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      rg_issuing_agency:{
+        type: Sequelize.STRING,
+        allowNull: true
+      },
       cpf:{
         type: Sequelize.STRING,
         allowNull: false
