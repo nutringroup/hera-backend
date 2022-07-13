@@ -462,7 +462,7 @@ class MonitoringService {
             }
 
             await PublicationMonitoring.update({ 
-                datePublication: publication.datePublication, link: publication.link, comment: publication.comment, color: publication.color,  idStatusPublication: publication.status, 
+                datePublication: publication.datePublication, comment: publication.comment, color: publication.color,  idStatusPublication: publication.status, 
                 isEvaluation: false, isStories: publication.isStories, isPhoto: publication.isPhoto, isVideo: publication.isVideo
             }, { where: { id: publication.idPublication }, transaction: transactionPublication });
 
