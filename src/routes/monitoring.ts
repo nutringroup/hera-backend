@@ -29,6 +29,7 @@ routes.post('/create-publication', middleware.validatePolicy('/squad'), monitori
 routes.put('/update-publication', middleware.validatePolicy('/squad'), monitoringController.updatePublication);
 routes.post('/evaluation-publication', middleware.validatePolicyInfluencer('/squad', false), monitoringController.evaluationPublication);
 routes.put('/update-link-tracking-publication', middleware.validatePolicy('/squad'), monitoringController.updateLinkTrakingPublication);
+routes.delete('/delete-publication/:idPublication', middleware.validatePolicy('/squad'), monitoringController.deletePublication);
 
 // ******** ROADMAP ********
 
