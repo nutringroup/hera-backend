@@ -3566,6 +3566,26 @@
       }
     },
 
+    "/prospection/get-nickname-influencer/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "nickname's influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                      "nickname": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "/legal/getContract/:idProspection": {
       "get": {
         "tags": ["Prospection-Legal"],

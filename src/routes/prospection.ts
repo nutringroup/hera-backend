@@ -51,6 +51,7 @@ routes.get('/user-changed/:idProspection', middleware.validatePolicy('/squad'), 
 routes.put('/change-status-prospection', middleware.validatePolicy('/squad'), prospectionController.changeStatusProspection)
 routes.get('/getLogChangedStatus/:idProspection', middleware.validatePolicy('/squad'), prospectionController.getLogChangedStatusProspection)
 routes.get('/get-user-prospection', middleware.validatePolicy('/squad'), prospectionController.getUserProspection);
+routes.get('/get-nickname-influencer/:idProspection', middleware.validatePolicy('/squad'),prospectionController.getNickNameInfluencer)
 
 // ******** routes of documentation ********
 

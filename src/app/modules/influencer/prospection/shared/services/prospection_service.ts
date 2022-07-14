@@ -2212,6 +2212,19 @@ class ProspectionService {
 
     }
 
+    async getNickNameInfluencer(idProspection: number) {
+
+        try {
+
+            const nickname = await prospectionRepository.getNickNameInfluencer(idProspection)
+            return nickname
+            
+        }
+        catch (error) {
+            throw error
+        }
+    }
+
 }
 
 export default new ProspectionService();
