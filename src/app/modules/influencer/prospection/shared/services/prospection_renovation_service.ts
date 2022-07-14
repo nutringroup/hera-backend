@@ -134,7 +134,7 @@ class ProspectionRenovationService {
             const prospectionWork = await ProspectionWork.findOne({ where: { idProspection: idProspection }});
 
             await ProspectionInformation.create({ 
-                public: prospectionInformation!.public, audience: prospectionInformation!.audience, cel: prospectionInformation!.cel, 
+                public: prospectionInformation!.public, audience: prospectionInformation!.audience, following: prospectionInformation!.following, cel: prospectionInformation!.cel, 
                 idLocation: prospectionInformation!.idLocation, idAge: prospectionInformation!.idAge, idProspection: idProspectionRenovation
             }, { transaction: transaction });
 
