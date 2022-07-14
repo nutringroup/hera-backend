@@ -83,7 +83,7 @@ class ProspectionService {
             const audience = Number(audienceProspection)
 
             await ProspectionInformation.create({ 
-                public: prospection.public, audience: audience, cel: prospection.cel, idLocation: prospection.idLocation, 
+                public: prospection.public, audience: audience, following: prospection.following, cel: prospection.cel, idLocation: prospection.idLocation, 
                 idAge: prospection.idAge, idProspection: prospection.idProspection
             }, { transaction: transactionProspetion });
 
@@ -148,7 +148,7 @@ class ProspectionService {
             const audience = Number(audienceProspection)
 
             await ProspectionInformation.update(
-                { public: prospection.public, audience: audience, cel: prospection.cel,idLocation: prospection.idLocation,
+                { public: prospection.public, audience: audience, following: prospection.following, cel: prospection.cel,idLocation: prospection.idLocation,
                     idAge: prospection.idAge
                 }, { where: { idProspection: prospection.idProspection  }, transaction: transactionProspetion }
             );
@@ -486,7 +486,7 @@ class ProspectionService {
             var firstContact;
             if(status >= 2){
                 firstContact = await ProspectionInformation.findOne({
-                    attributes: ['public', 'audience', 'cel'],
+                    attributes: ['public', 'audience', 'following', 'cel'],
                     where: { idProspection: idProspection }, raw: true, nest: true,
                     include: [
                         {
@@ -2218,7 +2218,7 @@ class ProspectionService {
 
             const nickname = await prospectionRepository.getNickNameInfluencer(idProspection)
             return nickname
-            
+
         }
         catch (error) {
             throw error
