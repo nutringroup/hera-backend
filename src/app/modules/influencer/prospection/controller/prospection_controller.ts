@@ -523,6 +523,23 @@ class ProspectionConroller {
 
     }
 
+    async getNickNameInfluencer(req: Request, res: Response): Promise<Response> {
+
+        const idProspection = req.params.idProspection
+
+        try {
+
+            const nickname = await prospectionService.getNickNameInfluencer(Number(idProspection))
+
+            return res.json(nickname)
+
+        }
+        catch (error) {
+            
+            return res.status(400).json({error: 'Algo ocorreu, não foi possível realizer a ação!'})
+        }
+    }
+
 }
 
 export default ProspectionConroller;

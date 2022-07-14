@@ -1385,6 +1385,7 @@
                   "example": {   
                     "idProspection": "integer",
                     "audience": "integer",
+                    "following": "integer",
                     "cel": "string",
                     "public": "string",
                     "idLocation": "integer",
@@ -1442,6 +1443,7 @@
                   "example": {   
                     "idProspection": "integer",
                     "audience": "integer",
+                    "following": "integer",
                     "cel": "string",
                     "public": "string",
                     "idLocation": "integer",
@@ -1763,6 +1765,7 @@
                   "example": {
                     "public": "20000",
                     "audience": "integer",
+                    "following": "integer",
                     "cel": "string",
                     "location": {
                       "id": "integer",
@@ -2924,6 +2927,7 @@
                   "example": {
                     "public": "20000",
                     "audience": "integer",
+                    "following": "integer",
                     "cel": "string",
                     "location": {
                       "id": "integer",
@@ -3558,6 +3562,26 @@
                       "urlBank": "string"
                     }
                   ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/prospection/get-nickname-influencer/:idProspection": {
+      "get": {
+        "tags": ["Prospection"],
+        "responses": {
+          "200": {
+            "description": "nickname's influencer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                      "nickname": "string"
+                  }
                 }
               }
             }

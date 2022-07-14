@@ -30,6 +30,7 @@ class ProspectionValidation {
             const schema = Yup.object().shape({
                 idProspection: Yup.string().required(),
                 audience: Yup.string().required(),
+                following: Yup.string().required(),
                 public: Yup.string().required(),
                 idLocation: Yup.string().required(),
                 idAge: Yup.string().required()

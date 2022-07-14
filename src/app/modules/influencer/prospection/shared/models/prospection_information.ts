@@ -11,6 +11,7 @@ class ProspectionInformation extends Model<ProspectionInformationAttributes, Pro
     public id!: number;
     public public!: string;
     public audience!: number;
+    public following!: number;
     public cel!: string;
     public idProspection!: number;
     public idLocation!: number;
@@ -33,6 +34,10 @@ ProspectionInformation.init(
         allowNull: false,
       },
       audience:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      following:{
         type: DataTypes.INTEGER,
         allowNull: false,
       },
