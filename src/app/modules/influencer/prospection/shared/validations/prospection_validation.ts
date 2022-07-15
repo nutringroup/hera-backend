@@ -606,6 +606,22 @@ class ProspectionValidation {
 
     }
 
+    async manyPaymentRequestValidation(data: any){
+
+        try {
+
+            const schema = Yup.array().of(Yup.string().required());
+    
+            if(!(await schema.isValid(data))){
+                throw new AuthError;
+            }
+            
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
     async confirmPayment(data: any){
 
         try {
@@ -632,6 +648,26 @@ class ProspectionValidation {
                 idPayment: Yup.string().required(),
                 idPaymentRequest: Yup.string().required(),
                 approval: Yup.string().required()
+            });
+    
+            if(!(await schema.isValid(data))){
+                throw new AuthError;
+            }
+            
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
+    async submitDatesAndNfValidation(data: any){
+
+        try {
+
+            const schema = Yup.object().shape({
+                idPayment: Yup.string().required(),
+                datePaymentReceive: Yup.string(),
+                datePaymentExpected: Yup.string()
             });
     
             if(!(await schema.isValid(data))){

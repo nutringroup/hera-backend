@@ -4854,7 +4854,10 @@
                       "instagramName": "string",
                       "datePayment": "string",
                       "value": "double",
-                      "isLate": "boolean"
+                      "isLate": "boolean",
+                      "datePaymentReceive": "string",
+                      "datePaymentExpected": "string",
+                      "nfFile": "string"
                     }
                   ]
                 }
@@ -4970,6 +4973,31 @@
       }
     },
 
+    "/financial/upload-date-nf": {
+      "put": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "update payment dates and nf",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPayment": "integer",
+                      "datePaymentExpected?": "string",
+                      "datePaymentReceive?": "string",
+                      "file?": "file"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "/financial/payment-request": {
       "post": {
         "tags": ["Prospection-Financial"],
@@ -4983,6 +5011,26 @@
                     {
                       "idPayment": "integer"
                     }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/many-payment-request": {
+      "post": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "many payment request to confirm payment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    "integer"
                   ]
                 }
               }

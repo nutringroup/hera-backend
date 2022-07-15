@@ -35,6 +35,31 @@ class ProspectionFinancialController {
 
     }
 
+    async manyPaymentRequest(req: Request, res: Response): Promise<Response> {
+
+        const payment = req.body;
+        const transaction = await sequelize.transaction();
+
+        try {
+
+            await prospectionValidation.manyPaymentRequestValidation(payment);
+
+            await prospectionService.manyPaymentRequest(payment, transaction);
+            await transaction.commit();
+            return res.json(true);
+            
+        } catch (error) {
+            await transaction.rollback();
+            if(error instanceof AuthError)
+                return res.status(400).json({error: error.message});
+            else if(error instanceof ProspectionError)
+                return res.status(400).json({error: error.message});
+            else
+                return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
+        }
+
+    }
+
     // ******** PUT ********
 
     async confirmPayment(req: Request, res: Response): Promise<Response> {
@@ -74,6 +99,32 @@ class ProspectionFinancialController {
             await prospectionValidation.approvalPayment(payment);
 
             await prospectionService.approvalPayment(payment, idUser, transaction);
+            await transaction.commit();
+
+            return res.json(true);
+            
+        } catch (error) {
+            await transaction.rollback();
+            if(error instanceof AuthError)
+                return res.status(400).json({error: error.message});
+            else if(error instanceof ProspectionError)
+                return res.status(400).json({error: error.message});
+            else
+                return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
+        }
+
+    }
+
+    async submitDatesAndNfFinancial(req: Request, res: Response): Promise<Response> {
+
+        const payment = req.body;
+        const transaction = await sequelize.transaction();
+
+        try {
+
+            await prospectionValidation.submitDatesAndNfValidation(payment);
+
+            await prospectionService.uploadNfAndDatesFinancial(payment, req.file, transaction);
             await transaction.commit();
 
             return res.json(true);

@@ -7,6 +7,9 @@ export interface ProspectionFinancialAttributes {
   idProspection: number;
   distraction: boolean;
   valuePayment: number;
+  datePaymentReceive?: string;
+  datePaymentExpected?: string;
+  nfFile?: string;
 
   updatedAt?: Date;
   createdAt?: Date;

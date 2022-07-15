@@ -2107,6 +2107,26 @@ class ProspectionService {
 
     }
 
+    async manyPaymentRequest(paymentRequest: number[], transaction: Transaction) {
+
+        try {
+
+            if(paymentRequest.length === 0) throw new ProspectionError('Selecione ao menos um pagamento!');
+
+            for (const index in paymentRequest) {
+                const payment = await ProspectionFinancialRequest.findOne({ where: { idProspectionFinancial: paymentRequest[index] }});
+                // if(payment) throw new ProspectionError("Esse pagamento já foi solicitado!");   
+                if(payment) continue;   
+                console.log(paymentRequest[index] );
+                await ProspectionFinancialRequest.create({ idProspectionFinancial: paymentRequest[index] }, { transaction: transaction });
+            }
+            
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
     async getPaymentRequest() {
 
         try {
@@ -2209,6 +2229,24 @@ class ProspectionService {
             }
 
             return;
+            
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
+    async uploadNfAndDatesFinancial(dataFinancial: any, file: any, transactionProspection: Transaction) {
+
+        try {
+                
+            if(file){
+                var { filename: path } = file;
+            }else{
+                throw new ProspectionError('Falta anexar documentos!');
+            }
+
+            await ProspectionFinancial.update({ datePaymentReceive: dataFinancial.datePaymentReceive, datePaymentExpected: dataFinancial.datePaymentExpected, nfFile: path }, { where: { id: dataFinancial.idPayment }, transaction: transactionProspection });
             
         } catch (error) {
             throw error;

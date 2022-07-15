@@ -14,6 +14,9 @@ class ProspectionFinancial extends Model<ProspectionFinancialAttributes, Prospec
     public confirmPayment?: string;
     public distraction!: boolean;
     public valuePayment!: number;
+    public datePaymentReceive?: string;
+    public datePaymentExpected?: string;
+    public nfFIle?: string;
 
     // timestamps!
     public readonly createdAt!: Date;
@@ -42,6 +45,18 @@ ProspectionFinancial.init(
       valuePayment:{
         type: DataTypes.DECIMAL(10,2),
         allowNull: false,
+      },
+      datePaymentReceive:{
+        type: DataTypes.DATEONLY,
+        allowNull: true,
+      },
+      datePaymentExpected:{
+        type: DataTypes.DATEONLY,
+        allowNull: true,
+      },
+      nfFile:{
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       idProspection:{
         type: DataTypes.INTEGER,
