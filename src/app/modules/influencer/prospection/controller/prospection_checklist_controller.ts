@@ -308,7 +308,6 @@ class ProspectionChecklistController {
             return res.json({ info: checklist, social: checklistSocial });
             
         } catch (error) {
-            
             if(error instanceof AuthError)
                 return res.status(400).json({error: error.message});
             else if(error instanceof ProspectionError)

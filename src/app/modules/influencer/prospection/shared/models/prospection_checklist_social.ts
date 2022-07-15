@@ -9,16 +9,30 @@ class ProspectionChecklistSocial extends Model<ProspectionChecklistSocialAttribu
     public id!: number;
     public bowlSend!: number;
     public observation!: string;
+    public paidPartnership!: boolean;
+    public paidPartnershipValue?: number;
     public storie!: number;
     public storieValue!: number;
+    public personalStoriePosted!: number;
     public photo!: number;
     public photoValue!: number;
     public photoFeed!: number;
     public photoFeedValue!: number;
+    public receivedPhotoDate!: string;
+    public postPhotoFeedDate!: string;
+    public postPhoto?: number;
     public video!: number;
     public videoValue!: number;
     public videoFeed!: number;
     public videoFeedValue!: number;
+    public videoDuration!: number;
+    public videoFormat!: string;
+    public videoUploadDate!: Date;
+    public receivedVideoDate!: Date;
+    public postVideo!: number;
+    public postVideoDate!: Date;
+    public canPublishInPublicityDay!: boolean;
+    public observationOtherPublicity?: string;
     public tiktok!: number;
     public tiktokValue!: number;
     public tiktokFeed!: number;
@@ -42,6 +56,9 @@ class ProspectionChecklistSocial extends Model<ProspectionChecklistSocialAttribu
     public commentBoost?: number;
     public valueUseImage!: number;
     public commentChecklist!: string;
+    public additionalImageUse!: boolean;
+    public additionalPeriod?: number;
+    public additionalPeriodValue?: number;
     public idProspection!: number;
 
     // timestamps!
@@ -65,12 +82,24 @@ ProspectionChecklistSocial.init(
             type: DataTypes.STRING,
             allowNull: true,
           },
+          paidPartnership:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+          },
+          paidPartnershipValue:{
+            type: DataTypes.DECIMAL(10,2),
+            allowNull: true,
+          },
           storie:{
             type: DataTypes.INTEGER,
             allowNull: false,
           },
           storieValue:{
             type: DataTypes.DECIMAL(10,2),
+            allowNull: false,
+          },
+          personalStoriePosted:{
+            type: DataTypes.INTEGER,
             allowNull: false,
           },
           photo:{
@@ -89,6 +118,18 @@ ProspectionChecklistSocial.init(
             type: DataTypes.DECIMAL(10,2),
             allowNull: false,
           },
+          receivedPhotoDate:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          postPhotoFeedDate:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          postPhoto:{
+            type: DataTypes.INTEGER,
+            allowNull: true,
+          },
           video:{
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -104,6 +145,38 @@ ProspectionChecklistSocial.init(
           videoFeedValue:{
             type: DataTypes.DECIMAL(10,2),
             allowNull: false,
+          },
+          videoDuration:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          videoFormat:{
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          videoUploadDate:{
+            type: DataTypes.DATE,
+            allowNull: false,
+          },
+          receivedVideoDate:{
+            type: DataTypes.DATE,
+            allowNull: false,
+          },
+          postVideo:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          postVideoDate:{
+            type: DataTypes.DATE,
+            allowNull: false,
+          },
+          canPublishInPublicityDay:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+          },
+          observationOtherPublicity:{
+            type: DataTypes.STRING,
+            allowNull: true,
           },
           tiktok:{
             type: DataTypes.INTEGER,
@@ -196,6 +269,18 @@ ProspectionChecklistSocial.init(
           commentChecklist:{
             type: DataTypes.TEXT,
             allowNull: false,
+          },
+          additionalImageUse:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+          },
+          additionalPeriod:{
+            type: DataTypes.INTEGER,
+            allowNull: true,
+          },
+          additionalPeriodValue:{
+            type: DataTypes.INTEGER,
+            allowNull: true,
           },
           idProspection:{
             type: DataTypes.INTEGER,

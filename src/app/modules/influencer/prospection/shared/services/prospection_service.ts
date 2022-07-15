@@ -858,12 +858,12 @@ class ProspectionService {
             }
 
             await ProspectionChecklistSocial.create({
-                bowlSend: prospection.bowlSend,observation: prospection.observation, storie: prospection.storie, storieValue: mediaProspection.storieValue, photo: prospection.photo, photoValue: mediaProspection.photoValue, photoFeedValue: mediaProspection.photoFeedValue, photoFeed: prospection.photoFeed,
-                video: prospection.video, videoValue: mediaProspection.videoValue, videoFeed: prospection.videoFeed, videoFeedValue: mediaProspection.videoFeedValue, tiktok: prospection.tiktok, tiktokValue: mediaProspection.tiktokValue,
+                bowlSend: prospection.bowlSend,observation: prospection.observation, paidPartnership: prospection.paidPartnership, paidPartnershipValue: prospection.paidPartnershipValue, storie: prospection.storie, storieValue: mediaProspection.storieValue, personalStoriePosted: prospection.personalStoriePosted, photo: prospection.photo, photoValue: mediaProspection.photoValue, photoFeedValue: mediaProspection.photoFeedValue, receivedPhotoDate: prospection.receivedPhotoDate, postPhotoFeedDate: prospection.postPhotoFeedDate, postPhoto: prospection.postPhoto, photoFeed: prospection.photoFeed,
+                video: prospection.video, videoValue: mediaProspection.videoValue, videoFeed: prospection.videoFeed, videoFeedValue: mediaProspection.videoFeedValue, videoDuration: prospection.videoDuration, videoFormat: prospection.videoFormat, videoUploadDate: prospection.videoUploadDate, receivedVideoDate: prospection.receivedVideoDate, postVideo: prospection.postVideo, postVideoDate: prospection.postVideoDate, canPublishInPublicityDay: prospection.canPublishInPublicityDay, observationOtherPublicity: prospection.observationOtherPublicity, tiktok: prospection.tiktok, tiktokValue: mediaProspection.tiktokValue,
                 tiktokFeed: prospection.tiktokFeed, tiktokFeedValue: mediaProspection.tiktokFeedValue, igtv: prospection.igtv, igtvValue: mediaProspection.igtvValue, igtvFeed: prospection.igtvFeed, igtvFeedValue: mediaProspection.igtvFeedValue,
                 live: prospection.live, liveValue: mediaProspection.liveValue, liveSave: prospection.liveSave, liveSaveValue: mediaProspection.liveSaveValue, youtube: prospection.youtube, youtubeValue: mediaProspection.youtubeValue,
                 youtubeFeed: prospection.youtubeFeed, youtubeFeedValue: mediaProspection.youtubeFeedValue, brandExclusive: prospection.brandExclusive, segmentExclusive: prospection.segmentExclusive, allowBoost: prospection.allowBoost, segmentExclusiveValue: mediaProspection.segmentExclusiveValue,
-                idProspection: prospection.idProspection, commentBoost: prospection.commentBoost, valueUseImage: prospection.valueUseImageValue, commentChecklist: commentChecklist
+                idProspection: prospection.idProspection, commentBoost: prospection.commentBoost, valueUseImage: prospection.valueUseImageValue, commentChecklist: commentChecklist, additionalImageUse: prospection.additionalImageUse, additionalPeriod: prospection.additionalPeriod, additionalPeriodValue: prospection.additionalPeriodValue
             }, { transaction: transactionProspetion } );
 
             await ProcessProspection.update({ idStatus: 18 }, { where: { idProspection: prospection.idProspection }, transaction: transactionProspetion });
@@ -899,12 +899,12 @@ class ProspectionService {
             // if(statusValidate!.idStatus >= 25) {
             //     throw new ProspectionError("Não é possível alterar os dados para prospecções com o status atual!");
             // }
-            await ProspectionChecklistSocial.update({bowlSend: checklistSocial.bowlSend, observation: checklistSocial.observation, storie: checklistSocial.storie, storieValue: checklistSocial.storieValue, photo: checklistSocial.photo, photoValue: checklistSocial.photoValue, photoFeedValue: checklistSocial.photoFeedValue, photoFeed: checklistSocial.photoFeed,
-                video: checklistSocial.video, videoValue: checklistSocial.videoValue, videoFeed: checklistSocial.videoFeed, videoFeedValue: checklistSocial.videoFeedValue, tiktok: checklistSocial.tiktok, tiktokValue: checklistSocial.tiktokValue,
+            await ProspectionChecklistSocial.update({bowlSend: checklistSocial.bowlSend, observation: checklistSocial.observation, paidPartnership: checklistSocial.paidPartnership, paidPartnershipValue: checklistSocial.paidPartnershipValue,  storie: checklistSocial.storie, storieValue: checklistSocial.storieValue, personalStoriePosted: checklistSocial.personalStoriePosted, photo: checklistSocial.photo, photoValue: checklistSocial.photoValue, photoFeedValue: checklistSocial.photoFeedValue, receivedPhotoDate: checklistSocial.receivedPhotoDate, postPhotoFeedDate: checklistSocial.postPhotoFeedDate, postPhoto: checklistSocial.postPhoto, photoFeed: checklistSocial.photoFeed,
+                video: checklistSocial.video, videoValue: checklistSocial.videoValue, videoFeed: checklistSocial.videoFeed, videoFeedValue: checklistSocial.videoFeedValue, videoDuration: checklistSocial.videoDuration, videoFormat:checklistSocial.videoFormat, videoUploadDate: checklistSocial.videoUploadDate, receivedVideoDate: checklistSocial.receivedVideoDate, postVideo: checklistSocial.postVideo, postVideoDate: checklistSocial.postVideoDate, canPublishInPublicityDay: checklistSocial.canPublishInPublicityDay, observationOtherPublicity: checklistSocial.observationOtherPublicity, tiktok: checklistSocial.tiktok, tiktokValue: checklistSocial.tiktokValue,
                 tiktokFeed: checklistSocial.tiktokFeed, tiktokFeedValue: checklistSocial.tiktokFeedValue, igtv: checklistSocial.igtv, igtvValue: checklistSocial.igtvValue, igtvFeed: checklistSocial.igtvFeed, igtvFeedValue: checklistSocial.igtvFeedValue,
                 live: checklistSocial.live, liveValue: checklistSocial.liveValue, liveSave: checklistSocial.liveSave, liveSaveValue: checklistSocial.liveSaveValue, youtube: checklistSocial.youtube, youtubeValue: checklistSocial.youtubeValue,
                 youtubeFeed: checklistSocial.youtubeFeed, youtubeFeedValue: checklistSocial.youtubeFeedValue, brandExclusive: checklistSocial.brandExclusive, segmentExclusive: checklistSocial.segmentExclusive, allowBoost: checklistSocial.allowBoost, segmentExclusiveValue: checklistSocial.segmentExclusiveValue,
-                idProspection: checklistSocial.idProspection, commentBoost: checklistSocial.commentBoost, valueUseImage: checklistSocial.valueUseImageValue, commentChecklist: commentChecklist}, { where: {idProspection: checklistSocial.idProspection }, transaction: transactionProspection}) // Verificar alteração do idProspection
+                idProspection: checklistSocial.idProspection, commentBoost: checklistSocial.commentBoost, valueUseImage: checklistSocial.valueUseImageValue, commentChecklist: commentChecklist, additionalImageUse: checklistSocial.additionalImageUse, additionalPeriod: checklistSocial.additionalPeriod, additionalPeriodValue: checklistSocial.additionalPeriodValue}, { where: {idProspection: checklistSocial.idProspection }, transaction: transactionProspection}) // Verificar alteração do idProspection
             return
         }
         catch(error) {
@@ -1167,7 +1167,7 @@ class ProspectionService {
 
         try {
 
-            const contract = await ProspectionContract.findOne({ attributes: ['urlContract', 'observation'], where: { idProspection: idProspection }});
+            const contract = await ProspectionContract.findOne({ attributes: ['urlContract', 'observation', 'effetiveDate', 'useImageDate'], where: { idProspection: idProspection }});
             const isAdditiveTerm = await ProspectionContract.findOne({where: {idProspection: idProspection}})
             
             if(isAdditiveTerm?.isAdditiveTerm === true) {
@@ -1237,12 +1237,13 @@ class ProspectionService {
 
             let checklist = await ProspectionChecklistSocial.findOne({ where: { idProspection: idProspection }});
             return {
-                bowlSend: checklist?.bowlSend,observation: checklist?.observation, storie: checklist?.storie, storieValue: checklist?.storieValue, photo: checklist?.photo, photoValue: checklist?.photoValue, photoFeedValue: checklist?.photoFeedValue, photoFeed: checklist?.photoFeed,
-                video: checklist?.video, videoValue: checklist?.videoValue, videoFeed: checklist?.videoFeed, videoFeedValue: checklist?.videoFeedValue, tiktok: checklist?.tiktok, tiktokValue: checklist?.tiktokValue,
+                bowlSend: checklist?.bowlSend,observation: checklist?.observation, paidPartnership: checklist?.paidPartnership, paidPartnershipValue: checklist?.paidPartnershipValue, storie: checklist?.storie, storieValue: checklist?.storieValue, personalStoriePosted: checklist?.personalStoriePosted, photo: checklist?.photo, photoValue: checklist?.photoValue, photoFeedValue: checklist?.photoFeedValue,
+                receivedPhotoDate: checklist?.receivedPhotoDate, postPhotoFeedDate: checklist?.postPhotoFeedDate, postPhoto: checklist?.postPhoto, photoFeed: checklist?.photoFeed,
+                video: checklist?.video, videoValue: checklist?.videoValue, videoFeed: checklist?.videoFeed, videoFeedValue: checklist?.videoFeedValue, videoDuration: checklist?.videoDuration, videoFormat: checklist?.videoFormat, videoUploadDate: checklist?.videoUploadDate, receivedVideoDate: checklist?.receivedVideoDate, postVideo: checklist?.postVideo, postVideoDate: checklist?.postVideoDate, canPublishInPublicityDay: checklist?.canPublishInPublicityDay, observationOtherPublicity: checklist?.observationOtherPublicity, tiktok: checklist?.tiktok, tiktokValue: checklist?.tiktokValue,
                 tiktokFeed: checklist?.tiktokFeed, tiktokFeedValue: checklist?.tiktokFeedValue, igtv: checklist?.igtv, igtvValue: checklist?.igtvValue, igtvFeed: checklist?.igtvFeed, igtvFeedValue: checklist?.igtvFeedValue,
                 live: checklist?.live, liveValue: checklist?.liveValue, liveSave: checklist?.liveSave, liveSaveValue: checklist?.liveSaveValue, youtube: checklist?.youtube, youtubeValue: checklist?.youtubeValue,
                 youtubeFeed: checklist?.youtubeFeed, youtubeFeedValue: checklist?.youtubeFeedValue, brandExclusive: checklist?.brandExclusive, segmentExclusive: checklist?.segmentExclusive, allowBoost: checklist?.allowBoost, segmentExclusiveValue: checklist?.segmentExclusiveValue,
-                idProspection: idProspection, commentBoost: checklist?.commentBoost, valueUseImage: checklist?.valueUseImage, commentChecklist: checklist?.commentChecklist
+                idProspection: idProspection, commentBoost: checklist?.commentBoost, valueUseImage: checklist?.valueUseImage, commentChecklist: checklist?.commentChecklist, additionalImageUse: checklist?.additionalImageUse, additionalPeriod: checklist?.additionalPeriod, additionalPeriodValue: checklist?.additionalPeriodValue
             } ;
             
         } catch (error) {
@@ -1715,7 +1716,7 @@ class ProspectionService {
                 throw new ProspectionError('Falta anexar documentos!');
             }
 
-            await ProspectionContract.update({ urlContract: urlContract }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });
+            await ProspectionContract.update({ urlContract: urlContract, effectiveDate: contract.effectiveDate, useImageDate: contract.useImageDate }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });
             if(contract.isLegal == 'false'){
                 await StatusStepProspection.create({ obs: false, idProspection: contract.idProspection, idStatus: 20 }, { transaction: transactionProspection });
                 await ProcessProspection.update({ idStatus: 20 }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });

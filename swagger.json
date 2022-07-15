@@ -2004,6 +2004,8 @@
                   "example": {
                     "urlContract": "string",
                     "observation": "string",
+                    "effectiveDate?": "string",
+                    "useImageDate?":"string",
                     "additiveTerm": [
                       "string",
                       "string"
@@ -2319,7 +2321,9 @@
                   "example": {
                     "idProspection": "integer",
                     "isLegal": "boolean",
-                    "file": "file"
+                    "file": "file",
+                    "effectiveDate?":"string",
+                    "useImageDate?":"string"
                   }
                 }
               }
@@ -2416,16 +2420,30 @@
                     "social": {
                       "bowlSend": "integer",
                       "observation": "string",
+                      "paidPartnership": "boolean",
+                      "paidPartnershipValue": "double",
                       "storie": "integer",
                       "storieValue": "double",
+                      "personalStoriePosted": "integer",
                       "photo": "integer",
                       "photoValue": "double",
                       "photoFeedValue": "double",
+                      "receivedPhotoDate": "string",
+                      "postPhotoFeedDate": "string",
+                      "postPhoto": "integer",
                       "photoFeed": "integer",
                       "video": "integer",
                       "videoValue": "double",
                       "videoFeed": "integer",
                       "videoFeedValue": "double",
+                      "videoDuration": "integer",
+                      "videoFormat": "string",
+                      "videoUploadDate": "string",
+                      "receivedVideoDate": "string",
+                      "postVideo": "integer",
+                      "postVideoDate": "string",
+                      "canPublishInPublicityDay": "boolean",
+                      "observationOtherPublicity": "string",
                       "tiktok": "integer",
                       "tiktokValue": "double",
                       "tiktokFeed": "integer",
@@ -2449,7 +2467,10 @@
                       "valueUseImage": "double",
                       "commentChecklist": "string",
                       "idProspection": "integer",
-                      "commentBoost": "string"
+                      "commentBoost": "string",
+                      "additionalImageUse": "boolean",
+                      "additionalPeriod": "integer",
+                      "additionalPeriodValue": "double"
                     }
                   }
                 }
@@ -3141,16 +3162,31 @@
                     },
                     "social": {
                       "bowlSend": "integer",
+                      "observation": "string",
+                      "paidPartnership": "boolean",
+                      "paidPartnershipValue": "double",
                       "storie": "integer",
                       "storieValue": "double",
+                      "personalStoriePosted": "integer",
                       "photo": "integer",
                       "photoValue": "double",
                       "photoFeedValue": "double",
+                      "receivedPhotoDate": "string",
+                      "postPhotoFeedDate": "string",
+                      "postPhoto": "integer",
                       "photoFeed": "integer",
                       "video": "integer",
                       "videoValue": "double",
                       "videoFeed": "integer",
                       "videoFeedValue": "double",
+                      "videoDuration": "integer",
+                      "videoFormat": "string",
+                      "videoUploadDate": "string",
+                      "receivedVideoDate": "string",
+                      "postVideo": "integer",
+                      "postVideoDate": "string",
+                      "canPublishInPublicityDay": "boolean",
+                      "observationOtherPublicity": "string",
                       "tiktok": "integer",
                       "tiktokValue": "double",
                       "tiktokFeed": "integer",
@@ -3174,7 +3210,10 @@
                       "valueUseImage": "double",
                       "commentChecklist": "string",
                       "idProspection": "integer",
-                      "commentBoost": "string"
+                      "commentBoost": "string",
+                      "additionalImageUse": "boolean",
+                      "additionalPeriod": "integer",
+                      "additionalPeriodValue": "double"
                     }
                   }
                 }
@@ -3219,7 +3258,9 @@
                   "example": {
                     "idProspection": "integer",
                     "isLegal": "boolean",
-                    "file": "file"
+                    "file": "file",
+                    "effectiveDate?":"string",
+                    "useImageDate?":"string"
                   }
                 }
               }
@@ -3601,7 +3642,9 @@
                 "schema": {
                   "example": {
                     "urlContract": "string",
-                    "observation":"string"
+                    "observation":"string",
+                    "effectiveDate?": "string",
+                    "useImageDate?":"string"
                   }
                 }
               }
@@ -4587,16 +4630,30 @@
                     "social": {
                       "bowlSend": "integer",
                       "observation": "string",
+                      "paidPartnership": "boolean",
+                      "paidPartnershipValue": "double",
                       "storie": "integer",
                       "storieValue": "double",
+                      "personalStoriePosted": "integer",
                       "photo": "integer",
                       "photoValue": "double",
                       "photoFeedValue": "double",
+                      "receivedPhotoDate": "string",
+                      "postPhotoFeedDate": "string",
+                      "postPhoto": "integer",
                       "photoFeed": "integer",
                       "video": "integer",
                       "videoValue": "double",
                       "videoFeed": "integer",
                       "videoFeedValue": "double",
+                      "videoDuration": "integer",
+                      "videoFormat": "string",
+                      "videoUploadDate": "string",
+                      "receivedVideoDate": "string",
+                      "postVideo": "integer",
+                      "postVideoDate": "string",
+                      "canPublishInPublicityDay": "boolean",
+                      "observationOtherPublicity": "string",
                       "tiktok": "integer",
                       "tiktokValue": "double",
                       "tiktokFeed": "integer",
@@ -4620,7 +4677,10 @@
                       "valueUseImage": "double",
                       "commentChecklist": "string",
                       "idProspection": "integer",
-                      "commentBoost": "string"
+                      "commentBoost": "string",
+                      "additionalImageUse": "boolean",
+                      "additionalPeriod": "integer",
+                      "additionalPeriodValue": "double"
                     }
                   }
                 }

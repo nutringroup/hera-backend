@@ -236,16 +236,28 @@ class ProspectionValidation {
             const schema = Yup.object().shape({
                 bowlSend: Yup.string().required(),
                 observation: Yup.string(),
+                paidPartnership: Yup.string().required(),
                 storie: Yup.string().required(),
                 storieValue: Yup.string().required(),
+                personalStoriePosted: Yup.string().required(),
                 photo: Yup.string().required(),
                 photoValue: Yup.string().required(),
                 photoFeed: Yup.string().required(),
                 photoFeedValue: Yup.string().required(),
+                receivedPhotoDate: Yup.string().required(),
+                postPhotoFeedDate: Yup.string().required(),
+                postPhoto: Yup.string().required(),
                 video: Yup.string().required(),
                 videoValue: Yup.string().required(),
                 videoFeed: Yup.string().required(),
                 videoFeedValue: Yup.string().required(),
+                videoDuration: Yup.string().required(),
+                videoFormat: Yup.string().required(),
+                videoUploadDate: Yup.string().required(),
+                receivedVideoDate: Yup.string().required(),
+                postVideo: Yup.string().required(),
+                postVideoDate: Yup.string().required(),
+                canPublishInPublicityDay: Yup.string().required(),
                 tiktok: Yup.string().required(),
                 tiktokValue: Yup.string().required(),
                 tiktokFeed: Yup.string().required(),
@@ -268,6 +280,7 @@ class ProspectionValidation {
                 segmentExclusiveValue: Yup.string().required(),
                 valueUseImage: Yup.string().required(),
                 valueUseImageValue: Yup.string().required(),
+                additionalImageUse: Yup.string().required(),
                 idProspection: Yup.string().required(),
             });
     
@@ -458,7 +471,9 @@ class ProspectionValidation {
             const schema = Yup.object().shape({
                 idProspection: Yup.string().required(),
                 isLegal: Yup.string().required(),
-                observation: Yup.string()
+                observation: Yup.string(),
+                effectiveDate: Yup.string().required(),
+                useImageDate: Yup.string().required()
             });
     
             if(!(await schema.isValid(data))){
