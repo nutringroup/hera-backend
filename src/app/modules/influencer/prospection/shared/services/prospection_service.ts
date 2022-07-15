@@ -1167,7 +1167,7 @@ class ProspectionService {
 
         try {
 
-            const contract = await ProspectionContract.findOne({ attributes: ['urlContract', 'observation', 'effetiveDate', 'useImageDate'], where: { idProspection: idProspection }});
+            const contract = await ProspectionContract.findOne({ attributes: ['urlContract', 'observation', 'effetiveDate', 'useImageDate', 'annexType', 'annexTypeObservation'], where: { idProspection: idProspection }});
             const isAdditiveTerm = await ProspectionContract.findOne({where: {idProspection: idProspection}})
             
             if(isAdditiveTerm?.isAdditiveTerm === true) {
@@ -1623,7 +1623,7 @@ class ProspectionService {
                 throw new ProspectionError('Falta anexar documentos!');
             }
 
-            await ProspectionContract.create({ urlContract: urlContract, idProspection: contract.idProspection, observation: contract.observation, isAdditiveTerm: false }, { transaction: transactionProspection });
+            await ProspectionContract.create({ urlContract: urlContract, idProspection: contract.idProspection, observation: contract.observation, isAdditiveTerm: false, annexType: contract.annexType, annexTypeObservation: contract.annexTypeObservation }, { transaction: transactionProspection });
             if(contract.isLegal == 'false'){
                 if(prospectionActual?.renegotiation){
                     await StatusStepProspection.create({ obs: false, idProspection: contract.idProspection, idStatus: 18 }, { transaction: transactionProspection });
@@ -1716,7 +1716,7 @@ class ProspectionService {
                 throw new ProspectionError('Falta anexar documentos!');
             }
 
-            await ProspectionContract.update({ urlContract: urlContract, effectiveDate: contract.effectiveDate, useImageDate: contract.useImageDate }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });
+            await ProspectionContract.update({ urlContract: urlContract, effectiveDate: contract.effectiveDate, useImageDate: contract.useImageDate, annexType: contract.annexType, annexTypeObservation: contract.annexType }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });
             if(contract.isLegal == 'false'){
                 await StatusStepProspection.create({ obs: false, idProspection: contract.idProspection, idStatus: 20 }, { transaction: transactionProspection });
                 await ProcessProspection.update({ idStatus: 20 }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });

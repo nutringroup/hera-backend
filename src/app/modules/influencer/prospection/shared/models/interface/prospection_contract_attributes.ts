@@ -8,6 +8,8 @@ export interface ProspectionContractAttributes {
   useImageDate?: string;
   idProspection: number;
   isAdditiveTerm?: boolean;
+  annexType?: string;
+  annexTypeObservation?: string;
 
   updatedAt?: Date;
   createdAt?: Date;

@@ -13,6 +13,8 @@ class ProspectionContract extends Model<ProspectionContractAttributes, Prospecti
     public urlContract!: string;
     public observation!: string;
     public isAdditiveTerm!: boolean;
+    public annexType?: string;
+    public annexTypeObservation?: string;
 
     // timestamps!
     public readonly createdAt!: Date;
@@ -51,6 +53,14 @@ ProspectionContract.init(
       isAdditiveTerm:{
         type: DataTypes.BOOLEAN,
         allowNull: false
+      },
+      annexType:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      annexTypeObservation:{
+        type: DataTypes.STRING,
+        allowNull: true,
       },
       createdAt:{
         type: DataTypes.DATE,

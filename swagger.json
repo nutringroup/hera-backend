@@ -2009,7 +2009,9 @@
                     "additiveTerm": [
                       "string",
                       "string"
-                    ]
+                    ],
+                    "annexType?": "string",
+                    "annexTypeObservation?": "string"
                   }
                 }
               }
@@ -2299,7 +2301,9 @@
                     "idProspection": "integer",
                     "isLegal": "boolean",
                     "file": "file",
-                    "observation": "string"
+                    "observation": "string",
+                    "annexType": "string",
+                    "annexTypeObservation": "string"
                   }
                 }
               }
@@ -3644,7 +3648,9 @@
                     "urlContract": "string",
                     "observation":"string",
                     "effectiveDate?": "string",
-                    "useImageDate?":"string"
+                    "useImageDate?":"string",
+                    "annexType?": "string",
+                    "annexTypeObservation?": "string"
                   }
                 }
               }
