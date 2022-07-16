@@ -3476,7 +3476,8 @@
                       "instagramName": "string",
                       "datePayment": "string",
                       "value": "double",
-                      "valuePayment": "double"
+                      "valuePayment": "double",
+                      "paymentProof": "string"
                     }
                   ]
                 }
@@ -4881,7 +4882,8 @@
                       "instagramName": "string",
                       "datePayment": "string",
                       "value": "double",
-                      "valuePayment": "double"
+                      "valuePayment": "double",
+                      "paymentProof": "string"
                     }
                   ]
                 }
@@ -4987,6 +4989,29 @@
                       "idPayment": "integer",
                       "datePaymentExpected?": "string",
                       "datePaymentReceive?": "string",
+                      "file?": "file"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/financial/upload-payment-proof": {
+      "put": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "upload payment proof",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPayment": "integer",
                       "file?": "file"
                     }
                   ]

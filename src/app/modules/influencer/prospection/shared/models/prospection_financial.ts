@@ -17,6 +17,7 @@ class ProspectionFinancial extends Model<ProspectionFinancialAttributes, Prospec
     public datePaymentReceive?: string;
     public datePaymentExpected?: string;
     public nfFIle?: string;
+    public paymentProof?: string;
 
     // timestamps!
     public readonly createdAt!: Date;
@@ -55,6 +56,10 @@ ProspectionFinancial.init(
         allowNull: true,
       },
       nfFile:{
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      paymentProof:{
         type: DataTypes.STRING,
         allowNull: true,
       },

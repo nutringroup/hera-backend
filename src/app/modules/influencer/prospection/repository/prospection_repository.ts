@@ -338,7 +338,7 @@ class ProspectionRepository {
         try{
             const prospections = await sequelize.query(`SELECT prospection_financial_influencer.id, prospection_influencer.id AS "idProspection", 
             influencer.instagram_name AS "instagramName", prospection_financial_influencer.date_payment AS "datePayment", prospection_work_influencer.media_value AS "value",
-            prospection_financial_influencer.value_payment AS "valuePayment"
+            prospection_financial_influencer.value_payment AS "valuePayment", prospection_financial_influencer.payment_proof AS "paymentProof"
             FROM prospection_influencer
             inner join influencer on prospection_influencer.id_influencer = influencer.id
             inner join process_prospection_influencer on prospection_influencer.id = process_prospection_influencer.id_prospection
@@ -364,7 +364,7 @@ class ProspectionRepository {
             if(isDirector){
                 var prospections = await sequelize.query(`SELECT prospection_financial_influencer.id, prospection_influencer.id AS "idProspection", 
                 influencer.instagram_name AS "instagramName", prospection_financial_influencer.date_payment AS "datePayment", prospection_work_influencer.media_value AS "value",
-                prospection_financial_influencer.value_payment AS "valuePayment"
+                prospection_financial_influencer.value_payment AS "valuePayment", prospection_financial_influencer.payment_proof AS "paymentProof"
                 FROM prospection_influencer
                 inner join influencer on prospection_influencer.id_influencer = influencer.id
                 inner join process_prospection_influencer on prospection_influencer.id = process_prospection_influencer.id_prospection
@@ -378,7 +378,7 @@ class ProspectionRepository {
             } else {
                 var prospections = await sequelize.query(`SELECT prospection_financial_influencer.id, prospection_influencer.id AS "idProspection", 
                 influencer.instagram_name AS "instagramName", prospection_financial_influencer.date_payment AS "datePayment", prospection_work_influencer.media_value AS "value",
-                prospection_financial_influencer.value_payment AS "valuePayment"
+                prospection_financial_influencer.value_payment AS "valuePayment", prospection_financial_influencer.payment_proof AS "paymentProof"
                 FROM prospection_influencer
                 inner join influencer on prospection_influencer.id_influencer = influencer.id
                 inner join process_prospection_influencer on prospection_influencer.id = process_prospection_influencer.id_prospection
@@ -406,7 +406,7 @@ class ProspectionRepository {
         try{
             const prospections = await sequelize.query(`SELECT prospection_financial_influencer.id, prospection_influencer.id AS "idProspection", 
             influencer.instagram_name AS "instagramName", prospection_financial_influencer.date_payment AS "datePayment", prospection_work_influencer.media_value AS "value",
-            prospection_financial_influencer.value_payment AS "valuePayment"
+            prospection_financial_influencer.value_payment AS "valuePayment", prospection_financial_influencer.payment_proof AS "paymentProof"
             FROM prospection_influencer
             inner join influencer on prospection_influencer.id_influencer = influencer.id
             inner join process_prospection_influencer on prospection_influencer.id = process_prospection_influencer.id_prospection

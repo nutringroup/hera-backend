@@ -141,6 +141,28 @@ class ProspectionFinancialController {
 
     }
 
+    async uploadPaymentProof(req: Request, res: Response): Promise<Response> {
+
+        const payment = req.body;
+
+        try {
+
+            await prospectionValidation.paymentRequest(payment);
+            await prospectionService.uploadPaymentProof(payment, req.file);
+
+            return res.json(true);
+            
+        } catch (error) {
+            if(error instanceof AuthError)
+                return res.status(400).json({error: error.message});
+            else if(error instanceof ProspectionError)
+                return res.status(400).json({error: error.message});
+            else
+                return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
+        }
+
+    }
+
     // ******** GET ********
 
     async getAllPaymentsAvailable(req: Request, res: Response): Promise<Response> {

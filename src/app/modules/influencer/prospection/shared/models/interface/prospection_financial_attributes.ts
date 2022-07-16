@@ -10,6 +10,7 @@ export interface ProspectionFinancialAttributes {
   datePaymentReceive?: string;
   datePaymentExpected?: string;
   nfFile?: string;
+  paymentProof?: string;
 
   updatedAt?: Date;
   createdAt?: Date;

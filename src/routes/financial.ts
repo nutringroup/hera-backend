@@ -17,6 +17,7 @@ routes.get('/get-payments-paid/:month', middleware.validatePolicy('/influencer-p
 routes.get('/get-payments-log/:idProspectionFinancial', middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.getPaymentLog);
 routes.get('/get-detail-bank-information/:idProspection', middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.getBankDocument);
 routes.put('/upload-date-nf',upload.single('file'), middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.submitDatesAndNfFinancial);
+routes.put('/upload-payment-proof',upload.single('file'), middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.uploadPaymentProof);
 
 routes.post('/payment-request', middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.paymentRequest);
 routes.post('/many-payment-request', middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.manyPaymentRequest);

@@ -2253,6 +2253,23 @@ class ProspectionService {
 
     }
 
+    async uploadPaymentProof(payment: any, file: any) {
+
+        try {
+                
+            if(file){
+                const { filename: path } = file;
+                await ProspectionFinancial.update({ paymentProof: path }, { where: { id: payment.idPayment }});
+            }else{
+                throw new ProspectionError('Você precisa enviar o arquivo do comproavente do pagamento!');
+            }
+            
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
 }
 
 export default new ProspectionService();
