@@ -310,8 +310,7 @@ class ProspectionRepository {
 
         try{
             const prospections = await sequelize.query(`SELECT prospection_financial_influencer.id, prospection_influencer.id AS "idProspection", prospection_influencer.cod , influencer.name AS nameInfluencer,
-            influencer.instagram_name AS "instagramName", prospection_financial_influencer.date_payment AS "datePayment", prospection_work_influencer.media_value AS "value",
-            prospection_financial_influencer.date_payment_receive AS "datePaymentReceive", prospection_financial_influencer.date_payment_expected AS "datePaymentExpected", prospection_financial_influencer.nf_file AS "nfFile"
+            influencer.instagram_name AS "instagramName", prospection_financial_influencer.date_payment AS "datePayment", prospection_work_influencer.media_value AS "value"
             FROM prospection_influencer
             inner join influencer on prospection_influencer.id_influencer = influencer.id
             inner join process_prospection_influencer on prospection_influencer.id = process_prospection_influencer.id_prospection
@@ -434,7 +433,8 @@ class ProspectionRepository {
     async detailsPayments(idProspection: number){
 
         try{
-            const prospections = await sequelize.query(`SELECT id, date_payment AS "datePayment", confirm_payment AS "confirmPayment", distraction
+            const prospections = await sequelize.query(`SELECT id, date_payment AS "datePayment", confirm_payment AS "confirmPayment", distraction,
+            date_payment_receive AS "datePaymentReceive", date_payment_expected AS "datePaymentExpected", nf_file AS "nfFile"
             from prospection_financial_influencer WHERE id_prospection = :idProspection`, { replacements: { idProspection: idProspection }, type: QueryTypes.SELECT })
             .then(function(properties) {
                 return properties;

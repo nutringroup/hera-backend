@@ -2241,12 +2241,11 @@ class ProspectionService {
         try {
                 
             if(file){
-                var { filename: path } = file;
+                const { filename: path } = file;
+                await ProspectionFinancial.update({ datePaymentReceive: dataFinancial.datePaymentReceive, datePaymentExpected: dataFinancial.datePaymentExpected, nfFile: path }, { where: { id: dataFinancial.idPayment }, transaction: transactionProspection });
             }else{
-                throw new ProspectionError('Falta anexar documentos!');
+                await ProspectionFinancial.update({ datePaymentReceive: dataFinancial.datePaymentReceive, datePaymentExpected: dataFinancial.datePaymentExpected }, { where: { id: dataFinancial.idPayment }, transaction: transactionProspection });
             }
-
-            await ProspectionFinancial.update({ datePaymentReceive: dataFinancial.datePaymentReceive, datePaymentExpected: dataFinancial.datePaymentExpected, nfFile: path }, { where: { id: dataFinancial.idPayment }, transaction: transactionProspection });
             
         } catch (error) {
             throw error;

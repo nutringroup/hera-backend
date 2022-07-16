@@ -4854,10 +4854,7 @@
                       "instagramName": "string",
                       "datePayment": "string",
                       "value": "double",
-                      "isLate": "boolean",
-                      "datePaymentReceive": "string",
-                      "datePaymentExpected": "string",
-                      "nfFile": "string"
+                      "isLate": "boolean"
                     }
                   ]
                 }
@@ -4931,7 +4928,10 @@
                       "id": "integer",
                       "datePayment": "string",
                       "confirmPayment": "string",
-                      "distraction": "integer"
+                      "distraction": "integer",
+                      "datePaymentReceive": "string",
+                      "datePaymentExpected": "string",
+                      "nfFile": "string"
                     }
                   ]
                 }
