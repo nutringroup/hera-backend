@@ -38,13 +38,11 @@ module.exports = {
                 type: Sequelize.STRING,
                 allowNull: false,
                 after: 'photo_feed_value',
-                defaultValue: 0
               }, { transaction: t }),
               queryInterface.addColumn('prospection_checklist_social_influencer', 'post_photo_feed_date', {
                 type: Sequelize.STRING,
                 allowNull: false,
                 after: 'received_photo_date',
-                defaultValue: 0
               }, { transaction: t }),
               queryInterface.addColumn('prospection_checklist_social_influencer', 'post_photo', {
                 type: Sequelize.INTEGER,
@@ -54,8 +52,7 @@ module.exports = {
               queryInterface.addColumn('prospection_checklist_social_influencer', 'video_duration', {
                 type: Sequelize.INTEGER,
                 allowNull: false,
-                after: 'video_feed_value',
-                defaultValue: 0
+                after: 'video_feed_value'
               }, { transaction: t }),
               queryInterface.addColumn('prospection_checklist_social_influencer', 'video_format', {
                 type: Sequelize.STRING,

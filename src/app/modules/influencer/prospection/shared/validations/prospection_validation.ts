@@ -145,7 +145,6 @@ class ProspectionValidation {
                 fallowers: Yup.string().required(),
                 advice: Yup.string().required(),
                 coupon: Yup.string().required(),
-                commentChecklist: Yup.string().required(),
                 birthday: Yup.string().required(),
             });
     
@@ -280,6 +279,7 @@ class ProspectionValidation {
                 segmentExclusiveValue: Yup.string().required(),
                 valueUseImage: Yup.string().required(),
                 valueUseImageValue: Yup.string().required(),
+                commentChecklist: Yup.string(),
                 additionalImageUse: Yup.string().required(),
                 idProspection: Yup.string().required(),
             });
