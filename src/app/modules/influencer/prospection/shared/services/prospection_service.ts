@@ -866,6 +866,8 @@ class ProspectionService {
                 idProspection: prospection.idProspection, commentBoost: prospection.commentBoost, valueUseImage: prospection.valueUseImageValue, commentChecklist: commentChecklist, additionalImageUse: prospection.additionalImageUse, additionalPeriod: prospection.additionalPeriod, additionalPeriodValue: prospection.additionalPeriodValue
             }, { transaction: transactionProspetion } );
 
+            if(prospection.effectiveDate) await ProspectionContract.create({effectiveDate: prospection.effectiveDate, useImageDate: prospection.useImageDate, idProspection: prospection.idProspection})
+            
             await ProcessProspection.update({ idStatus: 18 }, { where: { idProspection: prospection.idProspection }, transaction: transactionProspetion });
             await StatusStepProspection.create({ idProspection: prospection.idProspection, idStatus: 18, obs: false }, { transaction: transactionProspetion });
 
@@ -1236,6 +1238,7 @@ class ProspectionService {
         try {
 
             let checklist = await ProspectionChecklistSocial.findOne({ where: { idProspection: idProspection }});
+            let contract = await ProspectionContract.findOne({where: {idProspection: idProspection}})
             return {
                 bowlSend: checklist?.bowlSend,observation: checklist?.observation, paidPartnership: checklist?.paidPartnership, paidPartnershipValue: checklist?.paidPartnershipValue, storie: checklist?.storie, storieValue: checklist?.storieValue, personalStoriePosted: checklist?.personalStoriePosted, photo: checklist?.photo, photoValue: checklist?.photoValue, photoFeedValue: checklist?.photoFeedValue,
                 receivedPhotoDate: checklist?.receivedPhotoDate, postPhotoFeedDate: checklist?.postPhotoFeedDate, postPhoto: checklist?.postPhoto, photoFeed: checklist?.photoFeed,
@@ -1243,7 +1246,7 @@ class ProspectionService {
                 tiktokFeed: checklist?.tiktokFeed, tiktokFeedValue: checklist?.tiktokFeedValue, igtv: checklist?.igtv, igtvValue: checklist?.igtvValue, igtvFeed: checklist?.igtvFeed, igtvFeedValue: checklist?.igtvFeedValue,
                 live: checklist?.live, liveValue: checklist?.liveValue, liveSave: checklist?.liveSave, liveSaveValue: checklist?.liveSaveValue, youtube: checklist?.youtube, youtubeValue: checklist?.youtubeValue,
                 youtubeFeed: checklist?.youtubeFeed, youtubeFeedValue: checklist?.youtubeFeedValue, brandExclusive: checklist?.brandExclusive, segmentExclusive: checklist?.segmentExclusive, allowBoost: checklist?.allowBoost, segmentExclusiveValue: checklist?.segmentExclusiveValue,
-                idProspection: idProspection, commentBoost: checklist?.commentBoost, valueUseImage: checklist?.valueUseImage, commentChecklist: checklist?.commentChecklist, additionalImageUse: checklist?.additionalImageUse, additionalPeriod: checklist?.additionalPeriod, additionalPeriodValue: checklist?.additionalPeriodValue
+                idProspection: idProspection, commentBoost: checklist?.commentBoost, valueUseImage: checklist?.valueUseImage, commentChecklist: checklist?.commentChecklist, additionalImageUse: checklist?.additionalImageUse, additionalPeriod: checklist?.additionalPeriod, additionalPeriodValue: checklist?.additionalPeriodValue, effetiveDate: contract?.effectiveDate, useImageDate: contract?.useImageDate
             } ;
             
         } catch (error) {
@@ -1623,7 +1626,13 @@ class ProspectionService {
                 throw new ProspectionError('Falta anexar documentos!');
             }
 
-            await ProspectionContract.create({ urlContract: urlContract, idProspection: contract.idProspection, observation: contract.observation, isAdditiveTerm: false, annexType: contract.annexType, annexTypeObservation: contract.annexTypeObservation }, { transaction: transactionProspection });
+            const contractExist = await ProspectionContract.findOne({where: {idProspection: contract.idProspection}})
+            if(contractExist) {
+                await ProspectionContract.update({ urlContract: urlContract, observation: contract.observation, isAdditiveTerm: false, annexType: contract.annexType, annexTypeObservation: contract.annexTypeObservation }, {where: {idProspection: contract.idProspection}, transaction: transactionProspection });
+            } else {
+                await ProspectionContract.create({ urlContract: urlContract, idProspection: contract.idProspection, observation: contract.observation, isAdditiveTerm: false, annexType: contract.annexType, annexTypeObservation: contract.annexTypeObservation }, { transaction: transactionProspection });
+            }
+            
             if(contract.isLegal == 'false'){
                 if(prospectionActual?.renegotiation){
                     await StatusStepProspection.create({ obs: false, idProspection: contract.idProspection, idStatus: 18 }, { transaction: transactionProspection });

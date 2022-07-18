@@ -1961,7 +1961,9 @@
                       "commentBoost": "string",
                       "additionalImageUse": "boolean",
                       "additionalPeriod": "integer",
-                      "additionalPeriodValue": "double"
+                      "additionalPeriodValue": "double",
+                      "effectiveDate":"string",
+                      "useImageDate":"string"
                     }
                   }
                 }
@@ -2496,7 +2498,10 @@
                       "commentBoost": "string",
                       "additionalImageUse": "boolean",
                       "additionalPeriod": "integer",
-                      "additionalPeriodValue": "double"
+                      "additionalPeriodValue": "double",
+                      "effectiveDate":"string",
+                      "useImageDate": "string"
+                    }
                     }
                   }
                 }
@@ -3239,9 +3244,10 @@
                       "commentBoost": "string",
                       "additionalImageUse": "boolean",
                       "additionalPeriod": "integer",
-                      "additionalPeriodValue": "double"
+                      "additionalPeriodValue": "double",
+                      "effectiveDate":"string",
+                      "useImageDate":"string"
                     }
-                  }
                 }
               }
             }
@@ -3370,8 +3376,11 @@
                       "commentBoost": "string",
                       "additionalImageUse": "boolean",
                       "additionalPeriod": "integer",
-                      "additionalPeriodValue": "double"
+                      "additionalPeriodValue": "double",
+                      "effectiveDate":"string",
+                      "useImageDate": "string"
                     }
+                    
                   }
                 }
               }
@@ -4667,8 +4676,11 @@
                       "commentBoost": "string",
                       "additionalImageUse": "boolean",
                       "additionalPeriod": "integer",
-                      "additionalPeriodValue": "double"
-                  }}
+                      "additionalPeriodValue": "double",
+                      "effectiveDate":"string",
+                      "useImageDate": "string"
+                    }
+                  }
                 }
               }
             }
@@ -4749,7 +4761,9 @@
                       "commentBoost": "string",
                       "additionalImageUse": "boolean",
                       "additionalPeriod": "integer",
-                      "additionalPeriodValue": "double"
+                      "additionalPeriodValue": "double",
+                      "effectiveDate":"string",
+                      "useImageDate":"string"
                     }
                   }
                 }

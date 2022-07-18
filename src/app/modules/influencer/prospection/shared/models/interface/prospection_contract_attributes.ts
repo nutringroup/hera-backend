@@ -2,7 +2,7 @@ import { Optional } from 'sequelize';
 
 export interface ProspectionContractAttributes {
   id: number;
-  urlContract: string;
+  urlContract?: string;
   observation?: string;
   effectiveDate?: string;
   useImageDate?: string;
