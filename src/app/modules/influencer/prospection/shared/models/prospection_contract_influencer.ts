@@ -10,7 +10,7 @@ class ProspectionContract extends Model<ProspectionContractAttributes, Prospecti
     public idProspection!: number;
     public effectiveDate?: string;
     public useImageDate?: string;
-    public urlContract!: string;
+    public urlContract?: string;
     public observation!: string;
     public isAdditiveTerm!: boolean;
     public annexType?: string;
@@ -30,7 +30,7 @@ ProspectionContract.init(
       },
       urlContract:{
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       observation:{
         type: DataTypes.STRING,

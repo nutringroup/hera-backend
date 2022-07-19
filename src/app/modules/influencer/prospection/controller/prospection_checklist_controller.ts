@@ -256,7 +256,7 @@ class ProspectionChecklistController {
             return res.json(prospectionContract);
             
         } catch (error) {
-            
+            console.log(error)
             return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
         }
 
