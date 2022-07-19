@@ -1904,7 +1904,6 @@
                       "fallowers": "integer",
                       "advice": "boolean",
                       "coupon": "string",
-                      "commentChecklist": "string",
                       "birthday": "string"
                     },
                     "checklistSocial": {
