@@ -22,7 +22,7 @@ class ProspectionChecklistController {
             await prospectionValidation.checklistSocialValidation(prospection.checklistSocial);
 
             await prospectionService.createChecklist(prospection.checklist, transaction);
-            await prospectionService.createChecklistSocial(prospection.checklistSocial, prospection?.checklist?.commentChecklist, transaction);
+            await prospectionService.createChecklistSocial(prospection.checklistSocial, transaction);
 
             await transaction.commit();
             return res.json(true);
