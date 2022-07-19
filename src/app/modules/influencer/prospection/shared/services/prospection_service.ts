@@ -853,9 +853,9 @@ class ProspectionService {
 
             var mediaProspection = prospectionFunction.calculateMediaSocial(prospection);
 
-            // if(Number(prospectionget!.value) != Number(mediaProspection.mediaValue)){
-            //     throw new ProspectionError(`A soma dos valores não bate com o valor total (${prospectionget!.value})!`);
-            // }
+            if(Number(prospectionget!.value) != Number(mediaProspection.mediaValue)){
+                throw new ProspectionError(`A soma dos valores não bate com o valor total (${prospectionget!.value})!`);
+            }
 
             await ProspectionChecklistSocial.create({
                 bowlSend: prospection.bowlSend,observation: prospection.observation, paidPartnership: prospection.paidPartnership, paidPartnershipValue: prospection.paidPartnershipValue, storie: prospection.storie, storieValue: mediaProspection.storieValue, personalStoriePosted: prospection.personalStoriePosted, photo: prospection.photo, photoValue: mediaProspection.photoValue, photoFeedValue: mediaProspection.photoFeedValue, receivedPhotoDate: prospection.receivedPhotoDate, postPhotoFeedDate: prospection.postPhotoFeedDate, postPhoto: prospection.postPhoto, photoFeed: prospection.photoFeed,
