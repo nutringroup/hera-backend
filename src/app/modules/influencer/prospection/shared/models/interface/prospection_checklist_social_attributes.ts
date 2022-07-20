@@ -22,10 +22,10 @@ export interface ProspectionChecklistSocialAttributes {
   videoFeedValue: number;
   videoDuration: number;
   videoFormat: string;
-  videoUploadDate: Date;
-  receivedVideoDate: Date;
+  videoUploadDate: string;
+  receivedVideoDate: string;
   postVideo: number;
-  postVideoDate: Date;
+  postVideoDate: string;
   canPublishInPublicityDay: boolean;
   observationOtherPublicity?: string;
   tiktok: number;

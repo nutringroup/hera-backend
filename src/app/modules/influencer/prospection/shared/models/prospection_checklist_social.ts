@@ -27,10 +27,10 @@ class ProspectionChecklistSocial extends Model<ProspectionChecklistSocialAttribu
     public videoFeedValue!: number;
     public videoDuration!: number;
     public videoFormat!: string;
-    public videoUploadDate!: Date;
-    public receivedVideoDate!: Date;
+    public videoUploadDate!: string;
+    public receivedVideoDate!: string;
     public postVideo!: number;
-    public postVideoDate!: Date;
+    public postVideoDate!: string;
     public canPublishInPublicityDay!: boolean;
     public observationOtherPublicity?: string;
     public tiktok!: number;
@@ -155,11 +155,11 @@ ProspectionChecklistSocial.init(
             allowNull: false,
           },
           videoUploadDate:{
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
           },
           receivedVideoDate:{
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
           },
           postVideo:{
@@ -167,7 +167,7 @@ ProspectionChecklistSocial.init(
             allowNull: false,
           },
           postVideoDate:{
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
           },
           canPublishInPublicityDay:{
