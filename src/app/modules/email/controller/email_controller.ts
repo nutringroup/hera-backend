@@ -62,7 +62,7 @@ class EmailController {
       }));
 
       await transporter.sendMail({
-        from: "sendemail@nutrinhera.com.br",
+        from: "Nutrin <sendemail@nutrinhera.com.br>", //`"${sender.name}" <${sender.email}>`
         subject:"Comprovante de pagamento" ,
         text: descriptionEmail,
         attachments:[
