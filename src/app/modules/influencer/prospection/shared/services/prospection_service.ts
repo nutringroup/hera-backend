@@ -2279,7 +2279,7 @@ class ProspectionService {
             if(!payment) throw new ProspectionError("Pagamento não encontrado");
             
             if(payment.confirmPayment != "1") throw new ProspectionError("Pagamento ainda não foi pago!");
-            if(payment.nfFIle === null || payment.nfFIle === '') throw new ProspectionError("Comprovante de pagamento não encontrado!");
+            if(!payment?.nfFIle || payment.nfFIle === '' || payment.nfFIle === undefined) throw new ProspectionError("Comprovante de pagamento não encontrado!");
 
             const documentation = await ProspectionDocumentation.findOne({ where: { idProspection: payment.idProspection } });
             if(!documentation) throw new ProspectionError("Documentação não encontrada!");
