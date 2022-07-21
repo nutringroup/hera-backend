@@ -71,13 +71,14 @@ class ProspectionFinancialController {
             await prospectionValidation.paymentSendEmailValidation(req.body);
 
             await prospectionService.sendEmailPayment(payment);            
-            //await emailController.sendEmailWithAttachment();
 
             return res.json(true);
 
         }catch(error){
             console.log(error);
             if(error instanceof AuthError)
+                return res.status(400).json({error: error.message});
+            else if(error instanceof ProspectionError)
                 return res.status(400).json({error: error.message});
             else
                 return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
