@@ -894,22 +894,33 @@ class ProspectionService {
         }
     }
 
-    async updateChecklistSocial(checklistSocial: any, commentChecklist: string, transactionProspection: Transaction) {
+    async updateChecklistSocial(checklistSocial: any, transactionProspection: Transaction) {
 
         try {
             // const statusValidate = await ProcessProspection.findOne({where: {idProspection: checklistSocial.idProspection}})
             // if(statusValidate!.idStatus >= 25) {
             //     throw new ProspectionError("Não é possível alterar os dados para prospecções com o status atual!");
             // }
-            await ProspectionChecklistSocial.update({bowlSend: checklistSocial.bowlSend, observation: checklistSocial.observation, paidPartnership: checklistSocial.paidPartnership, paidPartnershipValue: checklistSocial.paidPartnershipValue,  storie: checklistSocial.storie, storieValue: checklistSocial.storieValue, personalStoriePosted: checklistSocial.personalStoriePosted, photo: checklistSocial.photo, photoValue: checklistSocial.photoValue, photoFeedValue: checklistSocial.photoFeedValue, receivedPhotoDate: checklistSocial.receivedPhotoDate, postPhotoFeedDate: checklistSocial.postPhotoFeedDate, postPhoto: checklistSocial.postPhoto, photoFeed: checklistSocial.photoFeed,
-                video: checklistSocial.video, videoValue: checklistSocial.videoValue, videoFeed: checklistSocial.videoFeed, videoFeedValue: checklistSocial.videoFeedValue, videoDuration: checklistSocial.videoDuration, videoFormat:checklistSocial.videoFormat, videoUploadDate: checklistSocial.videoUploadDate, receivedVideoDate: checklistSocial.receivedVideoDate, postVideo: checklistSocial.postVideo, postVideoDate: checklistSocial.postVideoDate, canPublishInPublicityDay: checklistSocial.canPublishInPublicityDay, observationOtherPublicity: checklistSocial.observationOtherPublicity, tiktok: checklistSocial.tiktok, tiktokValue: checklistSocial.tiktokValue,
-                tiktokFeed: checklistSocial.tiktokFeed, tiktokFeedValue: checklistSocial.tiktokFeedValue, igtv: checklistSocial.igtv, igtvValue: checklistSocial.igtvValue, igtvFeed: checklistSocial.igtvFeed, igtvFeedValue: checklistSocial.igtvFeedValue,
-                live: checklistSocial.live, liveValue: checklistSocial.liveValue, liveSave: checklistSocial.liveSave, liveSaveValue: checklistSocial.liveSaveValue, youtube: checklistSocial.youtube, youtubeValue: checklistSocial.youtubeValue,
-                youtubeFeed: checklistSocial.youtubeFeed, youtubeFeedValue: checklistSocial.youtubeFeedValue, brandExclusive: checklistSocial.brandExclusive, segmentExclusive: checklistSocial.segmentExclusive, allowBoost: checklistSocial.allowBoost, segmentExclusiveValue: checklistSocial.segmentExclusiveValue,
-                idProspection: checklistSocial.idProspection, commentBoost: checklistSocial.commentBoost, valueUseImage: checklistSocial.valueUseImageValue, commentChecklist: commentChecklist, additionalImageUse: checklistSocial.additionalImageUse, additionalPeriod: checklistSocial.additionalPeriod, additionalPeriodValue: checklistSocial.additionalPeriodValue}, { where: {idProspection: checklistSocial.idProspection }, transaction: transactionProspection}) // Verificar alteração do idProspection
+
+            const prospectionGet = await ProspectionWork.findOne({ attributes: ['value'], where: { idProspection: checklistSocial.idProspection }, raw: true });
+            if(!prospectionGet){
+                throw new ProspectionError();
+            }
+
+            var mediaProspection = prospectionFunction.calculateMediaSocial(checklistSocial);
+
+            if(Number(prospectionGet!.value) != Number(mediaProspection.mediaValue)){
+                throw new ProspectionError(`A soma dos valores não bate com o valor total (${prospectionGet!.value})!`);
+            }
+
+            await ProspectionChecklistSocial.update({bowlSend: checklistSocial.bowlSend, observation: checklistSocial.observation, paidPartnership: checklistSocial.paidPartnership, paidPartnershipValue: checklistSocial.paidPartnershipValue,  storie: checklistSocial.storie, storieValue: mediaProspection.storieValue, personalStoriePosted: checklistSocial.personalStoriePosted, photo: checklistSocial.photo, photoValue: mediaProspection.photoValue, photoFeedValue: mediaProspection.photoFeedValue, receivedPhotoDate: checklistSocial.receivedPhotoDate, postPhotoFeedDate: checklistSocial.postPhotoFeedDate, postPhoto: checklistSocial.postPhoto, photoFeed: checklistSocial.photoFeed,
+                video: checklistSocial.video, videoValue: mediaProspection.videoValue, videoFeed: checklistSocial.videoFeed, videoFeedValue: mediaProspection.videoFeedValue, videoDuration: checklistSocial.videoDuration, videoFormat:checklistSocial.videoFormat, videoUploadDate: checklistSocial.videoUploadDate, receivedVideoDate: checklistSocial.receivedVideoDate, postVideo: checklistSocial.postVideo, postVideoDate: checklistSocial.postVideoDate, canPublishInPublicityDay: checklistSocial.canPublishInPublicityDay, observationOtherPublicity: checklistSocial.observationOtherPublicity, tiktok: checklistSocial.tiktok, tiktokValue: mediaProspection.tiktokValue,
+                tiktokFeed: checklistSocial.tiktokFeed, tiktokFeedValue:mediaProspection.tiktokFeedValue, igtv: checklistSocial.igtv, igtvValue: mediaProspection.igtvValue, igtvFeed: checklistSocial.igtvFeed, igtvFeedValue: mediaProspection.igtvFeedValue,
+                live: checklistSocial.live, liveValue: mediaProspection.liveValue, liveSave: checklistSocial.liveSave, liveSaveValue: mediaProspection.liveSaveValue, youtube: checklistSocial.youtube, youtubeValue: mediaProspection.youtubeValue,
+                youtubeFeed: checklistSocial.youtubeFeed, youtubeFeedValue: mediaProspection.youtubeFeedValue, brandExclusive: checklistSocial.brandExclusive, segmentExclusive: checklistSocial.segmentExclusive, allowBoost: checklistSocial.allowBoost, segmentExclusiveValue: mediaProspection.segmentExclusiveValue,
+                idProspection: checklistSocial.idProspection, commentBoost: checklistSocial.commentBoost, valueUseImage: checklistSocial.valueUseImageValue, commentChecklist: checklistSocial.commentChecklist, additionalImageUse: checklistSocial.additionalImageUse, additionalPeriod: checklistSocial.additionalPeriod, additionalPeriodValue: checklistSocial.additionalPeriodValue}, { where: {idProspection: checklistSocial.idProspection }, transaction: transactionProspection})
             
             const verify = await ProspectionContract.findOne({where:{idProspection: checklistSocial.idProspection}})
-            console.log(verify)
             if(verify) await ProspectionContract.update({effectiveDate: checklistSocial.effectiveDate, useImageDate: checklistSocial.useImageDate},{where: {idProspection: checklistSocial.idProspection}})
             
             return

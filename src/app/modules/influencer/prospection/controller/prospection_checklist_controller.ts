@@ -207,7 +207,7 @@ class ProspectionChecklistController {
             await prospectionValidation.checklistSocialValidation(prospection.checklistSocial)
 
             await prospectionService.updateChecklist(prospection.checklist, transaction)
-            await prospectionService.updateChecklistSocial(prospection.checklistSocial, prospection?.checklist?.commentChecklist, transaction) 
+            await prospectionService.updateChecklistSocial(prospection.checklistSocial, transaction) 
             await transaction.commit()
             return res.json(true)
         }
