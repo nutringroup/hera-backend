@@ -35,6 +35,12 @@ module.exports = {
         references: { model: 'segment_influencer', key: 'id' },
         onDelete: 'RESTRICT'
       },
+      id_user:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'user', key: 'id' },
+        onDelete: 'RESTRICT'
+      },
       created_at:{
         type: Sequelize.DATE,
         allowNull: false,

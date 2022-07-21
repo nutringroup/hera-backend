@@ -125,6 +125,10 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
+      segment_exclusive_value:{
+        type: Sequelize.DECIMAL(10,2),
+        allowNull: false,
+      },
       allow_boost:{
         type: Sequelize.BOOLEAN,
         allowNull: false,

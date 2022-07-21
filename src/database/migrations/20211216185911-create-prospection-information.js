@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      cel:{
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       id_prospection:{
         type: Sequelize.INTEGER,
         allowNull: false,
