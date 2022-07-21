@@ -2275,8 +2275,10 @@ class ProspectionService {
 
         try {
 
-            const payment = await ProspectionFinancial.findOne({ where: { id: paymentEmail!.idPayment } });
+            const payment = await ProspectionFinancial.findOne({ where: { id: paymentEmail!.idPayment }, raw: true });
             if(!payment) throw new ProspectionError("Pagamento não encontrado");
+
+            console.log('payment', payment);
             
             if(payment.confirmPayment != "1") throw new ProspectionError("Pagamento ainda não foi pago!");
             if(!payment?.nfFIle || payment.nfFIle === '' || payment.nfFIle === undefined) throw new ProspectionError("Comprovante de pagamento não encontrado!");
