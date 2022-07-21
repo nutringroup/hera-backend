@@ -67,7 +67,7 @@ class EmailController {
       text: "I would like to write dialogue",
       attachments:[
           {
-              filename:'link.txt',
+              filename:'rg.pdf',
               path: `${__dirname}/../../../../../uploads/rg.pdf`
           }
       ],
