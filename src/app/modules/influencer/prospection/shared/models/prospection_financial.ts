@@ -16,7 +16,7 @@ class ProspectionFinancial extends Model<ProspectionFinancialAttributes, Prospec
     public valuePayment!: number;
     public datePaymentReceive?: string;
     public datePaymentExpected?: string;
-    public nfFIle?: string;
+    public nfFile?: string;
     public paymentProof?: string;
 
     // timestamps!

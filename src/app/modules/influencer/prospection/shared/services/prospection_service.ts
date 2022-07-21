@@ -2277,11 +2277,9 @@ class ProspectionService {
 
             const payment = await ProspectionFinancial.findOne({ where: { id: paymentEmail!.idPayment }, raw: true });
             if(!payment) throw new ProspectionError("Pagamento não encontrado");
-
-            console.log('payment', payment);
             
             if(payment.confirmPayment != "1") throw new ProspectionError("Pagamento ainda não foi pago!");
-            if(!payment?.nfFIle || payment.nfFIle === '' || payment.nfFIle === undefined) throw new ProspectionError("Comprovante de pagamento não encontrado!");
+            if(!payment?.nfFile || payment.nfFile === '') throw new ProspectionError("Comprovante de pagamento não encontrado!");
 
             const documentation = await ProspectionDocumentation.findOne({ where: { idProspection: payment.idProspection } });
             if(!documentation) throw new ProspectionError("Documentação não encontrada!");
@@ -2290,7 +2288,7 @@ class ProspectionService {
             if(!intervening) throw new ProspectionError("Documentação não encontrada!");
             if(intervening.email === '' || intervening.email === null) throw new ProspectionError("Email do interveniente não encontrado!");
 
-            await emailController.sendEmailWithAttachment(intervening.email, paymentEmail.descriptionEmail, payment.nfFIle!);
+            await emailController.sendEmailWithAttachment(intervening.email, paymentEmail.descriptionEmail, payment.nfFile!);
 
             
         } catch (error) {
