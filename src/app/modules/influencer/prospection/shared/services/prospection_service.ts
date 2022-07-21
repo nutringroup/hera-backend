@@ -1599,8 +1599,8 @@ class ProspectionService {
                 // * obs - se o contrato for G.I ou o tipo do influenciador for de menor de idade, apenas o jurídico pode gerar o contrato 
                 if(typeInfluencer.idType === 3 || documentation!.isUnderage){    
                     await StatusStepProspection.create({ obs: true, comments: document.comments, idProspection: document.idProspection, idStatus: 12 }, { transaction: transactionProspection });
-                    await StatusStepProspection.create({ obs: false, idProspection: document.idProspection, idStatus: 16 }, { transaction: transactionProspection });
-                    await ProcessProspection.update({ idStatus: 16 }, { where: { idProspection: document.idProspection }, transaction: transactionProspection });
+                    await StatusStepProspection.create({ obs: false, idProspection: document.idProspection, idStatus: 17 }, { transaction: transactionProspection });
+                    await ProcessProspection.update({ idStatus: 17 }, { where: { idProspection: document.idProspection }, transaction: transactionProspection });
                 }else{
                     await StatusStepProspection.create({ obs: true, comments: document.comments, idProspection: document.idProspection, idStatus: 12 }, { transaction: transactionProspection });
                     await StatusStepProspection.create({ obs: false, idProspection: document.idProspection, idStatus: 15 }, { transaction: transactionProspection });
