@@ -606,6 +606,25 @@ class ProspectionValidation {
 
     }
 
+    async paymentSendEmailValidation(data: any){
+
+        try {
+
+            const schema = Yup.object().shape({
+                idPayment: Yup.string().required(),
+                descriptionEmail: Yup.string().required(),
+            });
+    
+            if(!(await schema.isValid(data))){
+                throw new AuthError;
+            }
+            
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
     async manyPaymentRequestValidation(data: any){
 
         try {

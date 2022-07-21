@@ -46,9 +46,9 @@ class EmailController {
     }
   }
 
-  async sendEmailWithAttachment(email?: string, codigo?: string){ 
+  async sendEmailWithAttachment(email: string, descriptionEmail: string, fileToSend: string){ 
 
-    let attachment = fs.readFileSync(`${__dirname}/../../../../../uploads/rg.pdf`).toString("base64");
+    //let attachment = fs.readFileSync(`${__dirname}/../../../../../uploads/rg.pdf`).toString("base64");
 
     try{
       var transporter = nodemailer.createTransport(smtpTransport({
@@ -59,24 +59,23 @@ class EmailController {
           pass: "admin@2022!!"
         },
         tls: { rejectUnauthorized: false }
-    }));
+      }));
 
-    await transporter.sendMail({
-      from: "sendemail@nutrinhera.com.br",
-      subject:" hello ji " ,
-      text: "I would like to write dialogue",
-      attachments:[
+      await transporter.sendMail({
+        from: "sendemail@nutrinhera.com.br",
+        subject:"Comprovante de pagamento" ,
+        text: descriptionEmail,
+        attachments:[
           {
-              filename:'rg.pdf',
-              path: `${__dirname}/../../../../../uploads/rg.pdf`
+            filename: fileToSend,
+            path: `${__dirname}/../../../../../uploads/${fileToSend}`
           }
-      ],
-      to: "matheuslealcm@gmail.com"
-    });
-    console.log('foi')
-  }catch(error){
-    throw error;
-  }
+        ],
+        to: email
+      });
+    }catch(error){
+      throw error;
+    }
   }
 
 

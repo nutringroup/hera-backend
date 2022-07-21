@@ -64,11 +64,14 @@ class ProspectionFinancialController {
 
     async sendEmailPayment(req: Request, res: Response): Promise<Response>{
 
-        const { email, password } = req.body;
+        const payment = req.body;
 
         try{
 
-            await emailController.sendEmailWithAttachment();
+            await prospectionValidation.paymentSendEmailValidation(req.body);
+
+            await prospectionService.sendEmailPayment(payment);            
+            //await emailController.sendEmailWithAttachment();
 
             return res.json(true);
 

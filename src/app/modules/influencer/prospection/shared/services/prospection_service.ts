@@ -45,6 +45,7 @@ import notificationService from "../../../../notification/shared/services/notifi
 import prospectionAdditiveTermService from "./prospection_additive_term_service";
 import ProspectionLogChangeStatus from "../models/prospection_log_change_status_influencer";
 import fetch, { Headers } from "node-fetch";
+import emailController from "../../../../email/controller/email_controller";
 
 
 class ProspectionService {
@@ -2263,6 +2264,32 @@ class ProspectionService {
             }else{
                 throw new ProspectionError('Você precisa enviar o arquivo do comproavente do pagamento!');
             }
+            
+        } catch (error) {
+            throw error;
+        }
+
+    }
+
+    async sendEmailPayment(paymentEmail: any) {
+
+        try {
+
+            const payment = await ProspectionFinancial.findOne({ where: { id: paymentEmail!.idPayment } });
+            if(!payment) throw new ProspectionError("Pagamento não encontrado");
+            
+            if(payment.confirmPayment != "1") throw new ProspectionError("Pagamento ainda não foi pago!");
+            if(payment.nfFIle === null || payment.nfFIle === '') throw new ProspectionError("Comprovante de pagamento não encontrado!");
+
+            const documentation = await ProspectionDocumentation.findOne({ where: { idProspection: payment.idProspection } });
+            if(!documentation) throw new ProspectionError("Documentação não encontrada!");
+
+            const intervening = await ProspectionDocumentationIntervening.findOne({ where: { idDocumentation: documentation.id } });
+            if(!intervening) throw new ProspectionError("Documentação não encontrada!");
+            if(intervening.email === '' || intervening.email === null) throw new ProspectionError("Email do interveniente não encontrado!");
+
+            await emailController.sendEmailWithAttachment(intervening.email, paymentEmail.descriptionEmail, payment.nfFIle!);
+
             
         } catch (error) {
             throw error;
