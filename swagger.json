@@ -5087,6 +5087,29 @@
       }
     },
 
+    "/financial/send-email-payment": {
+      "post": {
+        "tags": ["Prospection-Financial"],
+        "responses": {
+          "200": {
+            "description": "send email to intervening",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": [
+                    {
+                      "idPayment": "integer",
+                      "descriptionEmail": "integer"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
     "/financial/get-detail-bank-information/:idProspection": {
       "get": {
         "tags": ["Prospection-Financial"],
