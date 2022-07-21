@@ -65,12 +65,12 @@ class EmailController {
       from: "sendemail@nutrinhera.com.br",
       subject:" hello ji " ,
       text: "I would like to write dialogue",
-      // Attachments:[
-      //     {
-      //         'filename':'link.txt',
-      //         'path': 'E:/STUDIES/CORE SUBJECTS/link.txt'
-      //     }
-      // ],
+      Attachments:[
+          {
+              'filename':'link.txt',
+              'path': `${__dirname}/../../../../../uploads/rg.pdf`
+          }
+      ],
       to: "matheuslealcm@gmail.com"
     });
     console.log('foi')
