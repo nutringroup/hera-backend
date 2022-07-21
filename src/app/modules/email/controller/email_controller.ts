@@ -52,16 +52,17 @@ class EmailController {
 
     try{
       var transporter = nodemailer.createTransport(smtpTransport({
-        host: 'mail.nutrinhera.com.br',
-        port: 25,
+        service: 'Gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
         auth: {
-          user: "sendemail@nutrinhera.com.br",
-          pass: "admin@2022!!"
+          user: "matheuslealcm@gmail.com",
+          pass: "maciel@901!!"
         },
     }));
 
     await transporter.sendMail({
-      from: "sendemail@nutrinhera.com.br",
+      from: "matheuslealcm@gmail.com",
       subject:" hello ji " ,
       text: "I would like to write dialogue",
       // Attachments:[
