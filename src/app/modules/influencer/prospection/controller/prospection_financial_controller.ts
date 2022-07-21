@@ -6,6 +6,7 @@ import ProspectionError from "../../../../shared/exceptions/prospection/prospect
 
 import SequelizeConnect  from '../../../../../config/sequelize_request';
 import auth_service from "../../../auth/shared/services/auth_service";
+import emailController from "../../../email/controller/email_controller";
 const sequelize = SequelizeConnect.sequelizeConnect; 
 
 class ProspectionFinancialController {
@@ -49,6 +50,7 @@ class ProspectionFinancialController {
             return res.json(true);
             
         } catch (error) {
+            console.log(error)
             await transaction.rollback();
             if(error instanceof AuthError)
                 return res.status(400).json({error: error.message});
@@ -58,6 +60,25 @@ class ProspectionFinancialController {
                 return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
         }
 
+    }
+
+    async sendEmailPayment(req: Request, res: Response): Promise<Response>{
+
+        const { email, password } = req.body;
+
+        try{
+
+            await emailController.sendEmailWithAttachment();
+
+            return res.json(true);
+
+        }catch(error){
+            console.log(error);
+            if(error instanceof AuthError)
+                return res.status(400).json({error: error.message});
+            else
+                return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
+        }
     }
 
     // ******** PUT ********

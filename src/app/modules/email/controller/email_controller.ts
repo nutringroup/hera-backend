@@ -1,5 +1,8 @@
 import SES from 'aws-sdk/clients/ses';
 import { recoveryPassword, tokenAccessLogin } from '../shared/email_config';
+var nodemailer = require('nodemailer');
+import fs from 'fs';
+var smtpTransport = require('nodemailer-smtp-transport');
 
 class EmailController {
 
@@ -41,6 +44,38 @@ class EmailController {
     }catch(error){
       throw error;
     }
+  }
+
+  async sendEmailWithAttachment(email?: string, codigo?: string){ 
+
+    let attachment = fs.readFileSync(`${__dirname}/../../../../../uploads/rg.pdf`).toString("base64");
+
+    try{
+      var transporter = nodemailer.createTransport(smtpTransport({
+        host: 'mail.nutrinhera.com.br',
+        port: 25,
+        auth: {
+          user: "sendemail@nutrinhera.com.br",
+          pass: "admin@2022!!"
+        },
+    }));
+
+    await transporter.sendMail({
+      from: "sendemail@nutrinhera.com.br",
+      subject:" hello ji " ,
+      text: "I would like to write dialogue",
+      // Attachments:[
+      //     {
+      //         'filename':'link.txt',
+      //         'path': 'E:/STUDIES/CORE SUBJECTS/link.txt'
+      //     }
+      // ],
+      to: "matheuslealcm@gmail.com"
+    });
+    console.log('foi')
+  }catch(error){
+    throw error;
+  }
   }
 
 

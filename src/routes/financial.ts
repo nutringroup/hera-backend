@@ -23,5 +23,7 @@ routes.post('/payment-request', middleware.validatePolicy('/influencer-payment')
 routes.post('/many-payment-request', middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.manyPaymentRequest);
 routes.put('/confirm-payment', middleware.validatePolicy('/influencer-payment'), prospectionFinancialController.confirmPayment);
 
+routes.post('/send-email-payment', prospectionFinancialController.sendEmailPayment);
+
 
 export default routes;
