@@ -65,10 +65,10 @@ class EmailController {
       from: "sendemail@nutrinhera.com.br",
       subject:" hello ji " ,
       text: "I would like to write dialogue",
-      Attachments:[
+      attachments:[
           {
-              'filename':'link.txt',
-              'path': `${__dirname}/../../../../../uploads/rg.pdf`
+              filename:'link.txt',
+              path: `${__dirname}/../../../../../uploads/rg.pdf`
           }
       ],
       to: "matheuslealcm@gmail.com"
