@@ -472,8 +472,8 @@ class ProspectionValidation {
                 idProspection: Yup.string().required(),
                 isLegal: Yup.string().required(),
                 observation: Yup.string(),
-                effectiveDate: Yup.string().required(),
-                useImageDate: Yup.string().required()
+                annexType: Yup.string(),
+                annexTypeObservation: Yup.string()
             });
     
             if(!(await schema.isValid(data))){

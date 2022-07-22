@@ -1644,9 +1644,9 @@ class ProspectionService {
 
             const contractExist = await ProspectionContract.findOne({where: {idProspection: contract.idProspection}})
             if(contractExist) {
-                await ProspectionContract.update({ urlContract: urlContract, observation: contract.observation, isAdditiveTerm: false, annexType: contract.annexType, annexTypeObservation: contract.annexTypeObservation }, {where: {idProspection: contract.idProspection}, transaction: transactionProspection });
+                await ProspectionContract.update({ urlContract: urlContract, observation: contract.observation, isAdditiveTerm: false, annexType: contract?.annexType, annexTypeObservation: contract?.annexTypeObservation }, {where: {idProspection: contract.idProspection}, transaction: transactionProspection });
             } else {
-                await ProspectionContract.create({ urlContract: urlContract, idProspection: contract.idProspection, observation: contract.observation, isAdditiveTerm: false, annexType: contract.annexType, annexTypeObservation: contract.annexTypeObservation }, { transaction: transactionProspection });
+                await ProspectionContract.create({ urlContract: urlContract, idProspection: contract.idProspection, observation: contract.observation, isAdditiveTerm: false, annexType: contract?.annexType, annexTypeObservation: contract?.annexTypeObservation }, { transaction: transactionProspection });
             }
             
             if(contract.isLegal == 'false'){
