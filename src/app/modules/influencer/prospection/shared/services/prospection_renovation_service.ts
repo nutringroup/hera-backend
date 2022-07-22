@@ -134,7 +134,7 @@ class ProspectionRenovationService {
             const prospectionWork = await ProspectionWork.findOne({ where: { idProspection: idProspection }});
 
             await ProspectionInformation.create({ 
-                public: prospectionInformation!.public, audience: prospectionInformation!.audience, cel: prospectionInformation!.cel, 
+                public: prospectionInformation!.public, audience: prospectionInformation!.audience, following: prospectionInformation!.following, cel: prospectionInformation!.cel, 
                 idLocation: prospectionInformation!.idLocation, idAge: prospectionInformation!.idAge, idProspection: idProspectionRenovation
             }, { transaction: transaction });
 
@@ -222,10 +222,11 @@ class ProspectionRenovationService {
 
             const prospectionChecklistSocial = await ProspectionChecklistSocial.findOne({ where: { idProspection: idProspection }});
             await ProspectionChecklistSocial.create({
-                bowlSend: prospectionChecklistSocial!.bowlSend, observation: prospectionChecklistSocial?.observation ?? '', storie: prospectionChecklistSocial!.storie,
-                storieValue: prospectionChecklistSocial!.storie, photo: prospectionChecklistSocial!.photo, photoValue: prospectionChecklistSocial!.photoValue,
-                photoFeed: prospectionChecklistSocial!.photoFeed, photoFeedValue: prospectionChecklistSocial!.photoFeedValue, video: prospectionChecklistSocial!.video,
-                videoValue: prospectionChecklistSocial!.videoValue, videoFeed: prospectionChecklistSocial!.videoFeed, videoFeedValue: prospectionChecklistSocial!.videoFeedValue,
+                bowlSend: prospectionChecklistSocial!.bowlSend, observation: prospectionChecklistSocial?.observation ?? '', paidPartnership: prospectionChecklistSocial!.paidPartnership, paidPartnershipValue: prospectionChecklistSocial?.paidPartnershipValue, storie: prospectionChecklistSocial!.storie,
+                storieValue: prospectionChecklistSocial!.storie, personalStoriePosted: prospectionChecklistSocial!.personalStoriePosted, photo: prospectionChecklistSocial!.photo, photoValue: prospectionChecklistSocial!.photoValue,
+                photoFeed: prospectionChecklistSocial!.photoFeed, photoFeedValue: prospectionChecklistSocial!.photoFeedValue, receivedPhotoDate: prospectionChecklistSocial!.receivedPhotoDate, postPhotoFeedDate: prospectionChecklistSocial!.postPhotoFeedDate, postPhoto: prospectionChecklistSocial!.postPhoto, video: prospectionChecklistSocial!.video,
+                videoValue: prospectionChecklistSocial!.videoValue, videoFeed: prospectionChecklistSocial!.videoFeed, videoFeedValue: prospectionChecklistSocial!.videoFeedValue, videoDuration: prospectionChecklistSocial!.videoDuration, videoFormat: prospectionChecklistSocial!.videoFormat, videoUploadDate: prospectionChecklistSocial!.videoUploadDate,
+                receivedVideoDate: prospectionChecklistSocial!.receivedVideoDate, postVideo: prospectionChecklistSocial!.postVideo, postVideoDate: prospectionChecklistSocial!.postVideoDate, canPublishInPublicityDay: prospectionChecklistSocial!.canPublishInPublicityDay, observationOtherPublicity: prospectionChecklistSocial?.observationOtherPublicity,
                 tiktok: prospectionChecklistSocial!.tiktok, tiktokValue: prospectionChecklistSocial!.tiktokValue, tiktokFeed: prospectionChecklistSocial!.tiktokFeed,
                 tiktokFeedValue: prospectionChecklistSocial!.tiktokFeedValue, igtv: prospectionChecklistSocial!.igtv, igtvValue: prospectionChecklistSocial!.igtvValue,
                 igtvFeed: prospectionChecklistSocial!.igtvFeed, igtvFeedValue: prospectionChecklistSocial!.igtvFeedValue, live: prospectionChecklistSocial!.live,
@@ -233,8 +234,8 @@ class ProspectionRenovationService {
                 youtube: prospectionChecklistSocial!.youtube, youtubeValue: prospectionChecklistSocial!.youtubeValue, youtubeFeed: prospectionChecklistSocial!.youtubeFeed,
                 youtubeFeedValue: prospectionChecklistSocial!.youtubeFeedValue, brandExclusive: prospectionChecklistSocial!.brandExclusive, segmentExclusive: prospectionChecklistSocial!.segmentExclusive,
                 segmentExclusiveValue: prospectionChecklistSocial!.segmentExclusiveValue, allowBoost: prospectionChecklistSocial!.allowBoost, commentBoost: prospectionChecklistSocial?.commentBoost,
-                valueUseImage: prospectionChecklistSocial!.valueUseImage, commentChecklist: prospectionChecklistSocial!.commentChecklist,
-                idProspection: idProspectionRenovation 
+                valueUseImage: prospectionChecklistSocial!.valueUseImage, commentChecklist: prospectionChecklistSocial!.commentChecklist, additionalImageUse: prospectionChecklistSocial!.additionalImageUse,
+                additionalPeriod: prospectionChecklistSocial?.additionalPeriod, additionalPeriodValue: prospectionChecklistSocial?.additionalPeriodValue,idProspection: idProspectionRenovation 
             }, { transaction: transaction });
             
         } catch (error) {

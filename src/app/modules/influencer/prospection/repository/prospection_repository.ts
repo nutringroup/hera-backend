@@ -531,6 +531,8 @@ class ProspectionRepository {
             .then(function(properties) {
                 return properties;
             });
+
+            return prospections;
     
         }catch(error){
             throw error;
@@ -566,6 +568,23 @@ class ProspectionRepository {
 
             return prospections;
             
+        }catch(error){
+            throw error;
+        }
+
+    }
+
+    async getNickNameInfluencer(idProspection: number){
+
+        try{
+            const prospections = await sequelize.query(`SELECT influencer.name AS nickname FROM prospection_influencer inner join 
+            influencer ON influencer.id = prospection_influencer.id_influencer AND prospection_influencer.id = :idProspection;`, { replacements: { idProspection: idProspection }, type: QueryTypes.SELECT })
+            .then(function(properties) {
+                return properties[0];
+            });
+
+            return prospections;
+    
         }catch(error){
             throw error;
         }

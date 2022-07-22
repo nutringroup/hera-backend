@@ -30,6 +30,7 @@ class ProspectionValidation {
             const schema = Yup.object().shape({
                 idProspection: Yup.string().required(),
                 audience: Yup.string().required(),
+                following: Yup.string().required(),
                 public: Yup.string().required(),
                 idLocation: Yup.string().required(),
                 idAge: Yup.string().required()
@@ -144,7 +145,6 @@ class ProspectionValidation {
                 fallowers: Yup.string().required(),
                 advice: Yup.string().required(),
                 coupon: Yup.string().required(),
-                commentChecklist: Yup.string().required(),
                 birthday: Yup.string().required(),
             });
     
@@ -235,16 +235,28 @@ class ProspectionValidation {
             const schema = Yup.object().shape({
                 bowlSend: Yup.string().required(),
                 observation: Yup.string(),
+                paidPartnership: Yup.string().required(),
                 storie: Yup.string().required(),
                 storieValue: Yup.string().required(),
+                personalStoriePosted: Yup.string().required(),
                 photo: Yup.string().required(),
                 photoValue: Yup.string().required(),
                 photoFeed: Yup.string().required(),
                 photoFeedValue: Yup.string().required(),
+                receivedPhotoDate: Yup.string(),
+                postPhotoFeedDate: Yup.string(),
+                postPhoto: Yup.string().required(),
                 video: Yup.string().required(),
                 videoValue: Yup.string().required(),
                 videoFeed: Yup.string().required(),
                 videoFeedValue: Yup.string().required(),
+                videoDuration: Yup.string().required(),
+                videoFormat: Yup.string().required(),
+                videoUploadDate: Yup.string(),
+                receivedVideoDate: Yup.string(),
+                postVideo: Yup.string(),
+                postVideoDate: Yup.string(),
+                canPublishInPublicityDay: Yup.string().required(),
                 tiktok: Yup.string().required(),
                 tiktokValue: Yup.string().required(),
                 tiktokFeed: Yup.string().required(),
@@ -267,6 +279,8 @@ class ProspectionValidation {
                 segmentExclusiveValue: Yup.string().required(),
                 valueUseImage: Yup.string().required(),
                 valueUseImageValue: Yup.string().required(),
+                commentChecklist: Yup.string(),
+                additionalImageUse: Yup.string().required(),
                 idProspection: Yup.string().required(),
             });
     
@@ -457,7 +471,9 @@ class ProspectionValidation {
             const schema = Yup.object().shape({
                 idProspection: Yup.string().required(),
                 isLegal: Yup.string().required(),
-                observation: Yup.string()
+                observation: Yup.string(),
+                annexType: Yup.string(),
+                annexTypeObservation: Yup.string()
             });
     
             if(!(await schema.isValid(data))){

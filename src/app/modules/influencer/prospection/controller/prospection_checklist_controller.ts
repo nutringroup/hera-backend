@@ -22,7 +22,7 @@ class ProspectionChecklistController {
             await prospectionValidation.checklistSocialValidation(prospection.checklistSocial);
 
             await prospectionService.createChecklist(prospection.checklist, transaction);
-            await prospectionService.createChecklistSocial(prospection.checklistSocial, prospection?.checklist?.commentChecklist, transaction);
+            await prospectionService.createChecklistSocial(prospection.checklistSocial, transaction);
 
             await transaction.commit();
             return res.json(true);
@@ -207,7 +207,7 @@ class ProspectionChecklistController {
             await prospectionValidation.checklistSocialValidation(prospection.checklistSocial)
 
             await prospectionService.updateChecklist(prospection.checklist, transaction)
-            await prospectionService.updateChecklistSocial(prospection.checklistSocial, prospection?.checklist?.commentChecklist, transaction) 
+            await prospectionService.updateChecklistSocial(prospection.checklistSocial, transaction) 
             await transaction.commit()
             return res.json(true)
         }
@@ -256,7 +256,7 @@ class ProspectionChecklistController {
             return res.json(prospectionContract);
             
         } catch (error) {
-            
+            console.log(error)
             return res.status(400).json({error:'Algo ocorreu, não foi possível realizar a ação!'});
         }
 
@@ -308,7 +308,6 @@ class ProspectionChecklistController {
             return res.json({ info: checklist, social: checklistSocial });
             
         } catch (error) {
-            
             if(error instanceof AuthError)
                 return res.status(400).json({error: error.message});
             else if(error instanceof ProspectionError)
