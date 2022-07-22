@@ -1741,7 +1741,7 @@ class ProspectionService {
                 throw new ProspectionError('Falta anexar documentos!');
             }
 
-            await ProspectionContract.update({ urlContract: urlContract, effectiveDate: contract.effectiveDate, useImageDate: contract.useImageDate, annexType: contract.annexType, annexTypeObservation: contract.annexType }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });
+            await ProspectionContract.update({ urlContract: urlContract, observation: contract.observation, annexType: contract?.annexType, annexTypeObservation: contract?.annexType }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });
             if(contract.isLegal == 'false'){
                 await StatusStepProspection.create({ obs: false, idProspection: contract.idProspection, idStatus: 20 }, { transaction: transactionProspection });
                 await ProcessProspection.update({ idStatus: 20 }, { where: { idProspection: contract.idProspection }, transaction: transactionProspection });
