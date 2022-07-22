@@ -15,6 +15,7 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
     public email!: string
     public status!: number
     public password!: string
+    public emailSend?: string
     public token!: string
     public tokenTimeValidation!: string
   
@@ -55,6 +56,10 @@ User.init(
       password: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      emailSend: {
+        type: DataTypes.STRING,
+        allowNull: true
       },
       token: {
         type: DataTypes.TEXT,

@@ -22,7 +22,7 @@ class UserService {
                 throw new AuthError('Email já cadastrado');
             }
 
-            const userCreated = await User.create({ name: newUser.name, email: newUser.email, status: 2, password: '', token: '', tokenTimeValidation:''}, { transaction: transactionUser });
+            const userCreated = await User.create({ name: newUser.name, email: newUser.email, status: 2, password: '', token: '', tokenTimeValidation:'', emailSend: newUser.email }, { transaction: transactionUser });
             await UserOffice.create({ idUser: userCreated.id, idOfficeSector: newUser.idOfficeSector }, { transaction: transactionUser });
 
             const token = jwt.sign({ id: userCreated.id }, AuthConfig.cod!,{expiresIn: AuthConfig.expiresInEmail});

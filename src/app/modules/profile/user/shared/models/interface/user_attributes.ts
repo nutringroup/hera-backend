@@ -6,6 +6,7 @@ export interface UserAttributes {
   email: string;
   status: number;
   password: string;
+  emailSend?: string;
   token: string;
   tokenTimeValidation: string;
   createdAt?: Date;

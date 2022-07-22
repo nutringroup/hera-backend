@@ -31,13 +31,12 @@ class AuthController {
 
             const token = authTokenService.createTokenJWT(userProfileValidate.user.id, 1);
             const cod = authTokenService.generateTokenDigits();
-            await emailController.sendEmail(email, cod, 0);
+            await emailController.sendEmail(userProfileValidate.user.emailSend!, cod, 0);
             await authService.createOrDestroyTokenToLogin(userProfileValidate.user.id, true, cod, token);
 
             return res.json(true);
 
         }catch(error){
-            console.log(error);
             if(error instanceof AuthError)
                 return res.status(400).json({error: error.message});
             else
