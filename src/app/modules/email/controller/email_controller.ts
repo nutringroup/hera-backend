@@ -55,14 +55,14 @@ class EmailController {
         host: 'mail.nutrinhera.com.br',
         port: 25,
         auth: {
-          user: "sendemail@nutrinhera.com.br",
-          pass: "admin@2022!!"
+          user: "financeiro@nutrinhera.com.br",
+          pass: ".]#KZB=q-MQ_K0,,1y"
         },
         tls: { rejectUnauthorized: false }
       }));
 
       await transporter.sendMail({
-        from: "Financeiro Nutrin <sendemail@nutrinhera.com.br>", //`"${sender.name}" <${sender.email}>`
+        from: "Financeiro Nutrin <financeiro@nutrinhera.com.br>", //`"${sender.name}" <${sender.email}>`
         subject:"Comprovante de pagamento" ,
         text: descriptionEmail,
         attachments:[
