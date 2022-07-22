@@ -464,7 +464,7 @@ class ProspectionValidation {
 
     }
 
-    async validateContract(data: any){
+    async   validateContract(data: any){
 
         try {
 
